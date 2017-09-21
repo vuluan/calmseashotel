@@ -1,0 +1,1 @@
+<?= parserContentToHtml($result[0]->content); ?>
