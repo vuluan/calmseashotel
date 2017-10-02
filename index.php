@@ -288,7 +288,7 @@ switch (ENVIRONMENT)
  * -------------------------------------------------------------------
  */
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-define('FOLDER', '/');
+define('FOLDER', '/calmseashotel/');
 define('ADMINCP', 'admincp');
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on'){
 	define('PATH_URL', 'https://'.$_SERVER['HTTP_HOST'].FOLDER);
@@ -300,7 +300,7 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on'){
 define('BASEFOLDER', substr(BASEPATH, 0, count(BASEPATH)-8));
 define('PREFIX', 'jv-it_');
 define('DB_USER', 'root');
-define('DB_PASS', 'admin');
+define('DB_PASS', '');
 define('DB_NAME', 'db_calmseashotel');
 
 
