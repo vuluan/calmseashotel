@@ -12,7 +12,7 @@
 
         </section>
         <!-- END / SUB BANNER -->
-        
+
         <!-- BLOG -->
         <section class="section-blog bg-white">
             <div class="container">
@@ -26,13 +26,13 @@
                                 <article class="post post-single">
 
                                     <div class="entry-media">
-                                        <img src="<?= PATH_URL ?>assets/images/frontend/blog/img-2.jpg" alt="">
-                                        <span class="posted-on"><strong>23</strong>JUN</span>
+                                        <img src="<?=PATH_URL.DIR_UPLOAD_NEWS.$detailNews[0]->image ?>" alt="">
+                                        <span class="posted-on"><strong><?php $date = $detailNews[0]->created ;echo date("d", strtotime($date)); ?></strong><?php $date = $detailNews[0]->created ;echo date("m", strtotime($date)); ?></span>
                                     </div>
                                     
                                     <div class="entry-header">
 
-                                        <h2 class="entry-title">relaxing &amp; travel in our hotel</h2>
+                                        <h2 class="entry-title"><?php $lang = $this->lang->lang(); $title = "title_".$lang; echo $detailNews[0]->$title ?></h2>
 
                                         <p class="entry-meta">
 
@@ -44,17 +44,12 @@
                                             <span class="entry-author">
                                                 <span class="screen-reader-text">Posted by </span>
                                                 <a href="#" class="entry-author-link">
-                                                    <span class="entry-author-name">Jonatha Owens</span>
+                                                    <span class="entry-author-name">Calm Seas</span>
                                                 </a>
                                             </span>
 
-                                            <span class="entry-categories">
-                                                <a href="#">Food Dinner</a>, 
-                                                <a href="#">Travel</a>
-                                            </span>
-
                                             <span class="entry-comments-link">
-                                                <a href="#">3 Comments</a>
+                                                <a href="#"><?php $lang = $this->lang->lang(); $cate_name = "cate_name_".$lang; echo $detailNews[0]->$cate_name ?></a>
                                             </span>
                                         </p>
 
@@ -62,29 +57,9 @@
 
                                     <div class="entry-content">
 
-                                        <p><b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</b></p><br />
+                                        <p><b><p><?php $lang = $this->lang->lang(); $des = "description_".$lang; echo $detailNews[0]->$des ?></p></b></p><br />
 
-                                        <p><b>But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</b></p><br />
-
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy <a href="#">text ever since the 1500s</a>, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries. But also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p> <br>
-
-                                        <blockquote>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived.</p>
-                                        </blockquote> <br><br>
-
-
-                                        <h5>relaxing &amp; travel in our hotel</h5>
-                                        <img src="<?= PATH_URL ?>assets/images/frontend/blog/img-2.jpg" alt="" class="aligncenter"><br><br>
-
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries. But also the leap into electronic typesetting, remaining essentially unchanged. It was <a href="#">popularised</a> in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p><br><br>
-
-                                        <img src="<?= PATH_URL ?>assets/images/frontend/blog/img-2.jpg" alt="" class="aligncenter"><br><br>
-
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p><br>
-
-                                        <p>
-                                            <em>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</em>
-                                        </p>
+                                        <?php $lang = $this->lang->lang(); $content = "content_".$lang; echo $detailNews[0]->$content ?>
 
                                     </div>
 

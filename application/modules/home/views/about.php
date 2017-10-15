@@ -30,8 +30,10 @@
                         <div class="text">
                             <h2 class="heading">Giới thiệu về Calm Seas</h2>
                             <div class="desc">
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. <b>The point of using Lorem Ipsum is that it has a more-or-less normal</b> distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing<br> packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p><br>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                                <p>Khách sạn Calm Seas bao gồm 2 tòa nhà nằm sát nhau với tổng cộng hơn 100 phòng được thiết kế hiện đại, nội thất sang trọng, trang trí ấm cúng, hài hòa, trong đó có hơn 80% tổng số phòng hướng biển trực diện, Quý du khách có thể phóng tầm nhìn bao quát toàn bộ eo biển Hòn Chồng – Một trong những danh lam thắng cảnh nổi tiếng không thể bỏ qua của Thành Phố Nha Trang xinh đẹp.</p><br>
+                                <p>Men theo hướng Bắc của đường Trần Phú – con đường ven biển đẹp nhất Nha Trang khoảng chừng 3 km, Khách sạn Calm Seas với mặt tiền rộng 25 mét cao 17 tầng nổi bật trên nền biển xanh và các nhà hàng, quán bar, liên hoàn các khách sạn mini xung quanh. Được sự đầu tư bài bản, khách sạn Calm Seas có đầy đủ tất cả các dịch vụ phục vụ khách tốt nhất gồm phòng Hội nghị, phòng Spa thư giãn, Nhà hàng hướng biển, Coffee, Hồ bơi, Sky Bar, bãi biển riêng dài 35 mét có ghế nằm và dù miễn phí, bãi đậu xe rộng rãi, 02 thang máy, wifi, gift shop…</p><br>
+                                
+                                
                             </div>
                         </div>
 
@@ -46,9 +48,28 @@
                         </div>
 
                         <div class="text">
+                            <h2 class="heading">Calm Seas sự lựa chọn hoàn hoản</h2>
+                            <div class="desc">
+                                <p>Với phương châm mang đến sự thân thiện, nhiệt tình, phục vụ chuyên nghiệp của đội ngũ nhân viên, khách sạn Calm Seas chính là điểm dừng chân lý tưởng và mang đến những trải nghiệm tuyệt vời cho Quý du khách.</p><br>
+                                <p>Những ưu thế về vị trí, đầu tư có chất lượng, không gian nghỉ dưỡng yên tĩnh, nhân viên thân thiện chuyên nghiệp, chúng tôi tự tin cam kết sẽ luôn mang lại sự hài lòng và tin tưởng nhất cho Quý du khách.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- END / ITEM -->
+
+                    <!-- ITEM -->
+                    <div class="about-item">
+
+                        <div class="img ">
+                            <img src="http://landing.engocreative.com/html/lotus/demo/images/about/img-2.jpg" alt="">
+                        </div>
+
+                        <div class="text">
                             <h2 class="heading">Tại sao phải chọn khách sạn CALM SEAS ?</h2>
                             <div class="desc">
-                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, <b>sometimes by accident, sometimes on purpose</b> (injected humour and the like).</p>
+                                <p>Mục tiêu của chúng tôi là trở thành lựa chọn đầu tiên cho Quý du khách khi quay lại Nha Trang. Để vậy, phong cách phục vụ mà chúng tôi hướng đến theo tiêu chí 3T (Tận tâm, Tận lực và Tận cùng) nhằm thỏa mãn sự hài lòng của Quý khách. Dịch vụ cam kết của Calm Seas đảm bảo bạn sẽ có một kỳ nghỉ lý tưởng, hoặc Calm Seas sẽ dành cho bạn những ưu tiên giảm giá hoặc cơ hội tham gia các trò chơi trúng thưởng. Quý vị hãy cho chúng tôi biết những mong muốn của Quý vị, chắc chắn chúng tôi sẽ không làm Quý vị thất vọng.</p>
+                                
                             </div>
                         </div>
 

@@ -4,7 +4,7 @@
             <div class="sub-banner">
                 <div class="container">
                     <div class="text text-center">
-                        <h2>Special Offers</h2>
+                        <h2><?= lang('title_special_offers') ?></h2>
                     </div>
                 </div>
             </div>
@@ -20,129 +20,30 @@
 
                         <div class="row">
                             <div class="guest-book_mansory">
-
+                                <?php if ($offers==''){
+                                    echo "no data";
+                                }else{?>
+                                <?php foreach ($offers as $key => $v): ;?>
                                 <!-- ITEM -->
                                 <div class="item-masonry col-xs-6 col-md-4">
                                     <div class="guest-book_item guest-book_item-2">
                                         <div class="activiti_item">
                                             <div class="img">
-                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers-detail"><img src="<?= PATH_URL ?>assets/images/frontend/offers/beach1.jpg" alt=""></a>
+                                                <a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$v->slug.'-'.$v->id;?>"><img src="<?=PATH_URL.DIR_UPLOAD_OFFERS.$v->image ?>" alt=""></a>
                                             </div>
                                         </div>
-                                        <h2>ROOM & SPA PACKAGE - 2 NIGHTS</h2>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing</p>
-                                        <span><b>Jonatha Owens</b> - Sydney Australia</span>
+                                        <h2><?php $lang = $this->lang->lang(); $title = "title_".$lang; echo $v->$title ?></h2>
+                                        <p><?php $lang = $this->lang->lang(); $des = "description_".$lang; echo $v->$des ?></p>
+                                        <span><b>Save <?php echo $v->discount  ?>% </b> - <?php $lang = $this->lang->lang(); $room_name = "room_name_".$lang; echo $v->$room_name ?></span>
                                     </div>
                                 </div>
                                 <!-- END / ITEM -->
+                                <?php endforeach ?>
+                                <?php  } ?>
+                                
 
                                 <!-- ITEM -->
-                                <div class="item-masonry col-xs-6 col-md-4">
-                                    <div class="guest-book_item guest-book_item-2">
-                                        <div class="activiti_item">
-                                            <div class="img">
-                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers-detail"><img src="<?= PATH_URL ?>assets/images/frontend/offers/ver2-accom4.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <h2>SAIGON WEEKENDS GETAWAY (35% OFF)</h2>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                        <span><b>Jonatha Owens</b> - Sydney Australia</span>
-                                    </div>
-                                </div>
-                                <!-- END / ITEM -->
-
-                                <!-- ITEM -->
-                                <div class="item-masonry col-xs-6 col-md-4">
-                                    <div class="guest-book_item guest-book_item-2">
-                                        <div class="activiti_item">
-                                            <div class="img">
-                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers-detail"><img src="<?= PATH_URL ?>assets/images/frontend/offers/ver2-restaurant1.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <h2>ROOM & SPA PACKAGE - 2 NIGHTS</h2>
-                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock</p>
-                                        <span><b>Jonatha Owens</b> - Sydney Australia</span>
-                                    </div>
-                                </div>
-                                <!-- END / ITEM -->
-
-                                <!-- ITEM -->
-                                <div class="item-masonry col-xs-6 col-md-4">
-                                    <div class="guest-book_item guest-book_item-2">
-                                        <div class="activiti_item">
-                                            <div class="img">
-                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers-detail"><img src="<?= PATH_URL ?>assets/images/frontend/offers/ver2-faci3.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <h2>I LIKE YOUR HOTTEL</h2>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words</p>
-                                        <span><b>Jonatha Owens</b> - Sydney Australia</span>
-                                    </div>
-                                </div>
-                                <!-- END / ITEM -->
-
-                                <!-- ITEM -->
-                                <div class="item-masonry col-xs-6 col-md-4">
-                                    <div class="guest-book_item guest-book_item-2">
-                                        <div class="activiti_item">
-                                            <div class="img">
-                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers-detail"><img src="<?= PATH_URL ?>assets/images/frontend/offers/ver2-faci4.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <h2>SAIGON WEEKENDS GETAWAY (35% OFF)</h2>
-                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one</p>
-                                        <span><b>Jonatha Owens</b> - Sydney Australia</span>
-                                    </div>
-                                </div>
-                                <!-- END / ITEM -->
-
-                                <!-- ITEM -->
-                                <div class="item-masonry col-xs-6 col-md-4">
-                                    <div class="guest-book_item guest-book_item-2">
-                                        <div class="activiti_item">
-                                            <div class="img">
-                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers-detail"><img src="<?= PATH_URL ?>assets/images/frontend/offers/7.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <h2>SAIGON WEEKENDS GETAWAY (35% OFF)</h2>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                        <span><b>Jonatha Owens</b> - Sydney Australia</span>
-                                    </div>
-                                </div>
-                                <!-- END / ITEM -->
-
-                                <!-- ITEM -->
-                                <div class="item-masonry col-xs-6 col-md-4">
-                                    <div class="guest-book_item guest-book_item-2">
-                                        <div class="activiti_item">
-                                            <div class="img">
-                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers-detail"><img src="<?= PATH_URL ?>assets/images/frontend/offers/ver2-restaurant1.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <h2>ADVANCED SAVER (29% OFF)</h2>
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing</p>
-                                        <span><b>Jonatha Owens</b> - Sydney Australia</span>
-                                    </div>
-                                </div>
-                                <!-- END / ITEM -->
-
-                                <!-- ITEM -->
-                                <div class="item-masonry col-xs-6 col-md-4">
-                                    <div class="guest-book_item guest-book_item-2">
-                                        <div class="activiti_item">
-                                            <div class="img">
-                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers-detail"><img src="<?= PATH_URL ?>assets/images/frontend/offers/ver2-restaurant10.jpg" alt=""></a>
-                                            </div>
-                                        </div>
-                                        <h2>LAST MINUTE DEAL (30% OFF)</h2>
-                                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock</p>
-                                        <span><b>Jonatha Owens</b> - Sydney Australia</span>
-                                    </div>
-                                </div>
-                                <!-- END / ITEM -->
-
-                                <!-- ITEM -->
-                                <div class="item-masonry col-xs-6 col-md-4">
+                                <!-- <div class="item-masonry col-xs-6 col-md-4">
                                     <div class="guest-book_item guest-book_item-2">
                                         <div class="activiti_item">
                                             <div class="img">
@@ -153,7 +54,7 @@
                                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. </p>
                                         <span><b>Jonatha Owens</b> - Sydney Australia</span>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- END / ITEM -->
 
                             </div>
@@ -177,4 +78,4 @@
                 </div>
             </div>
         </section>
-        <!-- END / GUEST BOOK -->
+        <!-- END / GUEST BOOK

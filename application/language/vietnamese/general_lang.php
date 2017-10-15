@@ -3,14 +3,43 @@
 $lang['top_address'] = 'Lô 2-3-4 đường Phạm Văn Đồng, Nha Trang';
 $lang['top_en'] = 'Tiếng Anh';
 $lang['top_vn'] = 'Tiếng Việt';
-$lang['menu_home'] = 'trang chủ';
+$lang['menu_home'] = 'Trang chủ';
 $lang['menu_about'] = 'Giới thiệu';
-$lang['menu_overview'] = 'hình ảnh 360';
+$lang['menu_overview'] = 'Hình ảnh 360';
 $lang['menu_rooms'] = 'Hạng phòng';
-$lang['menu_special'] = 'ưu đãi';
+$lang['menu_special'] = 'Ưu đãi';
 $lang['menu_restaurant'] = 'Nhà hàng';
 $lang['menu_contact'] = 'Liên hệ';
 //header
+
+// home
+$lang['btn_viewmore'] = 'chi tiết';
+$lang['btn_readmore'] = 'Đọc thêm';
+$lang['title_rooms'] = 'HẠNG PHÒNG';
+$lang['title_rooms_defferent'] = 'HẠNG PHÒNG KHÁC';
+
+$lang['title_services'] = 'Tiện ích';
+$lang['title_services_des'] = 'Với phương châm không ngừng đem đến các trải nghiệm thú vị và hài lòng nhất trong chuyến khám phá nghỉ dưỡng của Du khách, Khách Sạn Calm Sea gửi tặng Quý khách những dịch vụ tiện ích thiết thực mà độc đáo.';
+
+$lang['title_services_li1'] = 'Phục vụ ăn sáng tại phòng';
+$lang['title_services_li2'] = 'Thư giãn – Massage chân';
+$lang['title_services_li3'] = 'Bãi tắm riêng';
+$lang['title_services_li4'] = 'Dịch vụ đưa đón du khách';
+$lang['title_services_li5'] = 'Khu đậu xe';
+$lang['title_services_li6'] = 'Ăn tối lãng mạng';
+
+$lang['span_max_guest'] = 'Số khách';
+$lang['span_size'] = 'Diện tích';
+$lang['span_bedding'] = 'Giường';
+$lang['span_view'] = 'Hướng';
+$lang['title_guest_book'] = 'Phản hồi khách hàng';
+$lang['title_news'] = 'Tin tức & sự kiện';
+
+// end home
+$lang['tag_offers'] = 'Gói ưu đãi';
+$lang['tag_overview'] = 'Tổng quan';
+
+$lang['title_special_offers'] = 'Ưu đãi đặc biệt';
 
 //page about
 $lang['about_title'] = 'Giới thiệu về Calm Seas';

@@ -53,7 +53,7 @@
                             <a href=""><?=lang('top_en')?></a>
                             <a href=""><?=lang('top_vn')?></a>
                         </span>
-
+ 
                         <div class="dropdown currency">
                             <span>USD <i class="fa fa"></i></span>
                             <ul>
@@ -82,27 +82,31 @@
                     <nav class="header_menu">
                         <ul class="menu">
                             <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/home"> <?=lang('menu_home')?> </a></li>
-                            <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/about"><?=lang('menu_about')?></a></li>
+                            <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/about"> <?=lang('menu_about')?></a></li>
                             <li><a href="hinhanh360"><?=lang('menu_overview')?></a></li>
                             <li>
                                 <a href="#"><?=lang('menu_rooms')?> <span class="fa fa-caret-down"></span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/room-detail"><?=lang('footer_row2_standard')?></a></li>
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/room-detail"><?=lang('footer_row2_deluxe')?></a></li>
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/room-detail"><?=lang('footer_row2_suite')?></a></li>
+                                    <?php if ($room==''){
+                                        echo "no data";
+                                    }else{?>
+                                    <?php foreach ($room as $key => $value): ;?>
+                                    <li><a href="<?=PATH_URL.$this->lang->lang().'/rooms/'.$value->slug?>"><?php $lang = $this->lang->lang(); $name = "name_".$lang; echo $value->$name ?></a></li>
+                                    <?php endforeach ?>
+                                    <?php } ?>
                                 </ul>
                             </li>
                             <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/offers"><?=lang('menu_special')?></a></li>
                             <li>
                                 <a href="#"><?=lang('menu_restaurant')?> <span class="fa fa-caret-down"></span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/restaurant">Nhà hàng</a></li>
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/restaurant1">Quầy Bar</a></li>
-                                    <li><a href="#">Hồ bơi</a></li>
-                                    <li><a href="#">Bãi tắm</a></li>
-                                    <li><a href="#">Spa</a></li>
-                                    <li><a href="#">Quà lưu niệm</a></li>
-                                    <li><a href="#">Cà phê & điểm tâm</a></li>
+                                    <?php if ($utility==''){
+                                        echo "no data";
+                                    }else{?>
+                                    <?php foreach ($utility as $key => $value): ;?>
+                                    <li><a href="<?=PATH_URL.$this->lang->lang().'/restaurant/'.$value->slug?>"><?php $lang = $this->lang->lang(); $name = "name_".$lang; echo $value->$name ?></a></li>
+                                    <?php endforeach ?>
+                                    <?php } ?>
                                 </ul>
                             </li>
                            
@@ -186,7 +190,7 @@
                             
                         </div>
 
-                        <div class="col-xs-4 col-lg-2">
+                        <div class="col-xs-3 col-lg-2">
                             <div class="widget">
                                 <h4 class="widget-title"><?=lang('footer_row1_title')?></h4>
                                 <ul>
@@ -207,32 +211,36 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-4 col-lg-2">
+                        <div class="col-xs-3 col-lg-2">
                             <div class="widget">
                                 <h4 class="widget-title"><?=lang('footer_row2_title')?></h4>
                                 <ul>
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/room-detail"><?=lang('footer_row2_standard')?></a></li>
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/room-detail"><?=lang('footer_row2_deluxe')?></a></li>
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/room-detail"><?=lang('footer_row2_suite')?></a></li>
+                                    <?php if ($room==''){
+                                        echo "no data";
+                                    }else{?>
+                                    <?php foreach ($room as $key => $value): ;?>
+                                    <li><a href="<?=PATH_URL.$this->lang->lang().'/rooms/'.$value->slug?>"><?php $lang = $this->lang->lang(); $name = "name_".$lang; echo $value->$name ?></a></li>
+                                    <?php endforeach ?>
+                                    <?php }?>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-4 col-lg-2">
+                        <div class="col-xs-3 col-lg-2">
                             <div class="widget">
                                 <h4 class="widget-title"><?=lang('footer_row3_title')?></h4>
                                 <ul>
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/restaurant">Nhà hàng</a></li>
-                                    <li><a href="<?= PATH_URL ?><?=$this->lang->lang();?>/restaurant1">Quầy bar</a></li>
-                                    <li><a href="">Hồ bơi</a></li>
-                                    <li><a href="">Bãi tắm</a></li>
-                                    <li><a href="">Spa</a></li>
-                                    <li><a href="">Quà lưu niệm</a></li>
-                                    <li><a href="">Cà phê & điểm tâm</a></li>
+                                    <?php if ($utility==''){
+                                        echo "no data";
+                                    }else{?>
+                                    <?php foreach ($utility as $key => $value): ;?>
+                                    <li><a href="<?=PATH_URL.$this->lang->lang().'/restaurant/'.$value->slug?>"><?php $lang = $this->lang->lang(); $name = "name_".$lang; echo $value->$name ?></a></li>
+                                    <?php endforeach ?>
+                                    <?php }?>
                                 </ul>
                             </div>
                         </div>
 
-                        <div class="col-xs-4 col-lg-2">
+                        <div class="col-xs-3 col-lg-2">
                             <div class="rows">
                                 <div class="widget widget_tripadvisor">
                                     <h4 class="widget-title"><?=lang('footer_row4_title')?></h4>
@@ -268,7 +276,9 @@
 
     </div>
     <!-- END / PAGE WRAP -->
+   
     <!-- LOAD JQUERY -->
+    
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery-ui.min.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/bootstrap.min.js"></script>
@@ -285,6 +295,13 @@
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery.magnific-popup.min.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/SmoothScroll.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/scripts.js"></script>
+    <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery.number.js"></script>
+     <script type="text/javascript">
+        $(document).ready(function() {
+            $(".format-price").number( true,0);
+        });
+
+    </script>
     <script type="text/javascript">
         var root = '<?=PATH_URL?>';
         var csrf_token;

@@ -89,11 +89,7 @@
                                     </div>
                                     
                                     <div class="check_availability_group">
-                                    
-                                        
-                                    
                                         <div class="check_availability-field_group">
-                                    
                                             <div class="check_availability-field">
                                                 <label>Adult</label>
                                                 <select class="awe-select">
@@ -105,7 +101,6 @@
                                                     <option>6</option>
                                                 </select>
                                             </div>
-                                    
                                             <div class="check_availability-field">
                                                 <label>Chirld</label>
                                                 <select class="awe-select">

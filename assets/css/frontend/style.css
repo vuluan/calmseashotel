@@ -2066,7 +2066,7 @@ blockquote p:after {
     font-family: 'Montserrat';
     position: relative;
     padding-left: 60px;
-    line-height: 1
+    line-height: 1.2
 }
 .check-availability h2:before {
     content: '\f00c';
@@ -2843,7 +2843,7 @@ blockquote p:after {
     padding-bottom: 50px
 }
 .sidebar {
-    margin-right: 70px
+    margin-right: 20px
 }
 .sidebar .widget {
     margin-top: 40px
@@ -5128,7 +5128,7 @@ blockquote p:after {
 }
 .room-detail_book .room-detail_total .price .amout {
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
     color: #232323
 }
 .room-detail_book .room-detail_form {
