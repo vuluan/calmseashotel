@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="<?= PATH_URL . 'assets/images/frontend/' ?>favicon.png"/>
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Hind:400,300,500,600%7cMontserrat:400,700' rel='stylesheet' type='text/css'>
+
     <!-- CSSRARY -->
     <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/' ?>font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/' ?>font-lotusicon.css">
@@ -22,9 +23,10 @@
     <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/' ?>custom.css">
     <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/' ?>bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/' ?>helper.css">
+    <!-- <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/datepiker/' ?>style.css"> -->
     <!-- MAIN STYLE -->
-    <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/' ?>style.css"> 
-
+    <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/' ?>style.css">
+    
 </head>
 <body> <!--<![endif]-->
     <!-- PRELOADER -->
@@ -283,6 +285,8 @@
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery-ui.min.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/bootstrap-select.js"></script>
+    <!-- <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/datepiker/jquery.dateFormat.js"></script>
+    <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/datepiker/index.js"></script> -->
     <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;signed_in=true"></script> -->
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/isotope.pkgd.min.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery.themepunch.revolution.min.js"></script>
@@ -296,6 +300,10 @@
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/SmoothScroll.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/scripts.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery.number.js"></script>
+
+
+
+
      <script type="text/javascript">
         $(document).ready(function() {
             $(".format-price").number( true,0);

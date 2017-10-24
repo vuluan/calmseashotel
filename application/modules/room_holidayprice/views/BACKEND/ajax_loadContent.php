@@ -27,8 +27,7 @@
 					<th class="center sorting_disabled" width="35">No.</th>
 					<th class="sorting" onclick="sort('title')">Description_vn</th>.
 					<th class="sorting"  >Date</th>
-					<th class="sorting" >Price</th>
-					<th class="sorting" onclick="sort('cate_id')" id="cate_id">Rooms</th>
+					<th class="sorting" >percent increase</th>
 					<th class="center sorting" width="60" onclick="sort('status')" id="status">Status</th>
 					<th class="center sorting" width="80" onclick="sort('created')" id="created">Created</th>
 				</tr>
@@ -45,8 +44,7 @@
 					<td class="center"><?=$k+1+$start?></td>
 					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?=$v->description_vn?></a></td>
 					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?=$v->date?></a></td>
-					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?=$v->price?></a></td>
-					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?=$v->cate_name?></a></td>
+					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?=$v->pricepercent?>%</a></td>
 					<td class="center" id="loadStatusID_<?=$v->id?>"><a class="no_underline" href="javascript:void(0)" onclick="updateStatus(<?=$v->id?>,<?=$v->status?>,'<?=$module?>')"><?php ($v->status==0) ? print '<span class="label label-sm label-default status-blocked">Blocked</span>' : print '<span class="label label-sm label-success status-approved">Approved</span>' ?></a></td>
 					<td class="center"><?=date('Y-m-d H:i:s',strtotime($v->created))?></td>
 				</tr>
@@ -57,8 +55,7 @@
 						<td class="center"><?=$k+1+$start?></td>
 						<td><?=$v->description_vn?></td>
 						<td><?=$v->date?></td>
-						<td><?=$v->price?></td>
-						<td><?=$v->cate_name?></td>
+						<td><?=$v->pricepercent?>%</td>
 						<td class="center" id="loadStatusID_<?=$v->id?>"><span class="label label-sm label-default status-deleted">Deleted</span></td>
 						<td class="center"><?=date('Y-m-d H:i:s',strtotime($v->created))?></td>
 					</tr>

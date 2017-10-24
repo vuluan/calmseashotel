@@ -20,7 +20,7 @@
                 <!-- DETAIL -->
                 <div class="room-detail">
                     <div class="row">
-                        <div class="col-lg-9">
+                        <div class="col-lg-12">
                             <!-- LAGER IMGAE -->
                             <div class="room-detail_img">
                                 <?php if ($imagesRooms==''){
@@ -50,48 +50,7 @@
 
                         </div>
 
-                        <div class="col-lg-3">
-
-                            <!-- FORM BOOK -->
-                            <div class="room-detail_book">
-
-                                <div class="room-detail_total">
-                                    <img src="<?= PATH_URL ?>assets/images/frontend/icon-logo.png" alt="" class="icon-logo">
-                                    
-                                    <h6>STARTING ROOM FROM</h6>
-                                    
-                                    <p class="price">
-                                        <span class="amout format-price"><?php echo $detailRooms[0]->price ?></span>  VNĐ/days
-                                    </p>
-                                </div>
-                                
-                                <div class="room-detail_form">
-                                    <label>Arrive</label>
-                                    <input type="text" class="awe-calendar from" placeholder="Arrival Date">
-                                
-                                    <label>Depature</label>
-                                    <input type="text" class="awe-calendar to" placeholder="Departure Date">
-                                    <label>Adult</label>
-                                    <select class="awe-select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option selected>3</option>
-                                        <option>4</option>
-                                    </select>
-                                    <label>Chirld</label>
-                                    <select class="awe-select">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option selected>3</option>
-                                        <option>4</option>
-                                    </select>
-                                    <button class="awe-btn awe-btn-13" onclick="booking();">Book Now</button>
-                                </div>
-
-                            </div>
-                            <!-- END / FORM BOOK -->
-
-                        </div>
+                        
                     </div>
                 </div>
                 <!-- END / DETAIL -->
@@ -107,7 +66,6 @@
                         <div class="col-md-3">
                             <ul class="room-detail_tab-header">
                                 <li class="active"><a href="#amenities" data-toggle="tab"><?=lang('tag_overview')?></a></li>
-                                <li><a href="#package" data-toggle="tab"><?=lang('tag_offers')?></a></li>
                             </ul>
                         </div>
                                         
@@ -123,6 +81,87 @@
                                 <!-- END / AMENITIES -->
                                 <!-- PACKAGE -->
                                 <div class="tab-pane fade" id="package">
+                            
+                                    <div class="room-detail_package">
+                                        <?php if ($offersRooms==''){
+                                            echo "no data";
+                                        }else{?>
+                                        <?php foreach ($offersRooms as $key => $value): ;?>
+                                            <div class="reservation-package_item">
+                                                <div class="reservation-package_img">
+                                                    <a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug;?>"><img src="<?=PATH_URL.DIR_UPLOAD_OFFERS.$value->image ?>" alt=""></a>
+                                                </div>
+                                                <div class="reservation-package_text">
+                                                    <h4><a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug.'-'.$value->id;?>"><?php $lang = $this->lang->lang(); $title = "title_".$lang; echo $value->$title ?></a></h4>
+                                                    <p><?php $lang = $this->lang->lang(); $des = "description_".$lang; echo $value->$des ?></p>
+                                                    <div class="reservation-package_book-price">
+                                                        <p class="reservation-package_price">
+                                                            <span class="amout format-price"><?php echo $value->price*(100-$value->discount)/100; ?></span>
+                                                        </p>
+                                                        <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/booking-step-1" class="awe-btn awe-btn-default">Book package</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        <?php endforeach ?>     
+                                        <?php }?>
+                                    </div>
+                            
+                                </div>
+                                <!-- END / PACKAGE -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-detail_tab">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <!-- FORM BOOK -->
+                            <div class="room-detail_book" style="margin-top: 0px ! important">
+                                <div class="room-detail_total">
+                                    <!-- <img src="<?= PATH_URL ?>assets/images/frontend/icon-logo.png" alt="" class="icon-logo">
+                                    <h6>STARTING ROOM FROM</h6> -->
+                                    <p class="price">
+                                        <span class="amout format-price"><?php echo $detailRooms[0]->price ?></span>  VNĐ/days
+                                    </p>
+                                </div>
+                                <div class="room-detail_form">
+                                    <label>Arrive</label>
+                                    <input type="text" class="awe-calendar from" placeholder="Arrival Date">
+                                
+                                    <label>Depature</label>
+                                    <input type="text" class="awe-calendar to" placeholder="Departure Date">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Adult</label>
+                                            <select class="awe-select">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option selected>3</option>
+                                                <option>4</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Chirld</label>
+                                            <select class="awe-select">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option selected>3</option>
+                                                <option>4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <button class="awe-btn awe-btn-13" onclick="booking();">Book Now</button>
+                                </div>
+                            </div>
+                            <!-- END / FORM BOOK -->
+                        </div>
+                        <div class="col-md-9">
+                            <div class="room-detail_tab-content tab-content">
+                                <!-- PACKAGE -->
+                                <div class="tab-pane fade active in">
                             
                                     <div class="room-detail_package">
                                         <?php if ($offersRooms==''){

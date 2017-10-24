@@ -3,8 +3,7 @@
             <div class="sub-banner">
                 <div class="container">
                     <div class="text text-center">
-                        <h2>Our BLOG</h2>
-                        <p>Lorem Ipsum is simply dummy text</p>
+                        <h2><?= lang('title_news') ?></h2>
                     </div>
                 </div>
 

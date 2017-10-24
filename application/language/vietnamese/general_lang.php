@@ -46,7 +46,8 @@ $lang['about_title'] = 'Giới thiệu về Calm Seas';
 $lang['about_title1'] = 'Giới thiệu về Calm Seas';
 $lang['about_title2'] = 'Tại sao phải chọn khách sạn CALM SEAS ?';
 $lang['about_title3'] = 'Số liệu thống kê';
-
+// news
+//
 // footer
 $lang['footer_news&offers'] = 'Tin tức & ưu đãi';
 $lang['footer_placeholder_email'] = 'Địa chỉ mail';

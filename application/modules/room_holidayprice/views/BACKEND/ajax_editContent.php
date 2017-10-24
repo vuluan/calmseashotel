@@ -125,23 +125,6 @@ function showResponse(responseText, statusText, xhr, $form) {
 								<label class="radio-inline"><input type="radio" name="highlightAdmincp" value="1" <?= isset($result->status) ? $result->status == 1 ? 'checked' : '' : 'checked' ?> > Approved</label>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="control-label col-md-2">Categories: <span class="required" aria-required="true">*</span></label>
-							<div class="col-md-6">
-								<select class="select form-control" data-live-search="true" data-size="8" name="cateAdmincp" id="cateAdmincp">
-									<option value="">None</option>
-									<?php foreach ($cates as $key => $cate): ?>
-										<?php  
-											$select = '';
-											if($result->accommodationId == $cate->id){
-												$select = 'selected="selected"';
-											}
-										?>
-										<option value="<?= $cate->id; ?>" <?= $select; ?> ><?= $cate->name_vn; ?></option>
-									<?php endforeach; ?>
-								</select>
-							</div>
-						</div>
 
 
 						<div class="form-group">
@@ -154,7 +137,7 @@ function showResponse(responseText, statusText, xhr, $form) {
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-md-2">Price: <span class="required" aria-required="true">*</span></label>
+							<label class="control-label col-md-2">Percent increase(%): <span class="required" aria-required="true">*</span></label>
 							<div class="col-md-4"><input value="<?php if(isset($result->price)) { print $result->price; }else{ print '';} ?>" type="text" name="priceAdmincp" id="priceAdmincp" class="form-control"/></div>
 						</div>
 

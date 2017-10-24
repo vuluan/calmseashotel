@@ -27,7 +27,7 @@ $lang['title_services_li4'] = 'Shuttle service';
 $lang['title_services_li5'] = 'Parking';
 $lang['title_services_li6'] = 'Romantic dinner';
 
-$lang['span_max_guest'] = 'Max Person(s)';
+$lang['span_max_guest'] = 'Person(s)';
 $lang['span_size'] = 'Size';
 $lang['span_bedding'] = 'Bed';
 $lang['span_view'] = 'View';
@@ -44,7 +44,8 @@ $lang['about_title1'] = 'About Calm Seas Hotel';
 $lang['about_title2'] = 'WHY GUEST CHOOSE LOTUS HOTEL?';
 $lang['about_title3'] = 'HOTEL STATISTICS';
 
-
+// news
+//
 // footer
 $lang['footer_news&offers'] 		= 'NEWS & OFFERS';
 $lang['footer_placeholder_email'] 	= 'Your email address';

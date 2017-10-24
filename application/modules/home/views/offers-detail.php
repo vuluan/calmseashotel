@@ -4,7 +4,7 @@
             <div class="sub-banner">
                 <div class="container">
                     <div class="text text-center">
-                        <h2>Offers Detail</h2>
+                        <h2><?=lang('title_special_offers') ?></h2>
                     </div>
                 </div>
 

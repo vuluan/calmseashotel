@@ -50,7 +50,6 @@ class Room_holidayprice extends MX_Controller {
 			$result = $this->model->getDetailManagement($id);
 		}
 		$data = array(
-			'cates'=>$this->model->getDataCategory(),
 			'result'=>$result[0],
 			'module'=>$this->module,
 			'id'=>$id

@@ -16,7 +16,7 @@ select:focus {
 }
 body {
     position: relative;
-    font-family: 'Hind';
+/*    font-family: 'Hind';*/
     font-size: 14px;
     color: #232323;
     padding: 0;
@@ -868,7 +868,7 @@ blockquote p:after {
 .ui-datepicker .ui-state-disabled,
 .ui-datepicker .ui-widget-content .ui-state-disabled,
 .ui-datepicker .ui-widget-header .ui-state-disabled {
-    opacity: .8
+    /*opacity: .8*/
 }
 .ui-datepicker .ui-state-default,
 .ui-datepicker .ui-widget-content .ui-state-default,
@@ -1391,7 +1391,7 @@ blockquote p:after {
     display: block;
     padding: 7px 20px;
     color: #232323;
-    font-size: 14px;
+    font-size: 13px;
     -webkit-transition: all .2s ease;
     -moz-transition: all .2s ease;
     -ms-transition: all .2s ease;
@@ -2270,14 +2270,14 @@ blockquote p:after {
 .guestbook-item .text p:before {
     position: absolute;
     font-family: 'Montserrat';
-    content: '“';
+    /*content: '“';*/
     margin-left: -15px;
     top: 0;
     font-size: 40px
 }
 .guestbook-item .text p:after {
     font-family: 'Montserrat'; 
-    content: '„';
+    /*content: '„';*/
     font-size: 40px;
     line-height: 0;
     margin-left: 10px
@@ -5248,7 +5248,7 @@ blockquote p:after {
 }
 .room-detail_amenities h5,
 .room-detail_overview h5 {
-    font-family: 'Hind';
+    font-family: 'Montserrat';
     font-weight: bold
 }
 .room-detail_amenities p,
@@ -5262,7 +5262,7 @@ blockquote p:after {
     color: #232323;
     font-weight: bold;
     font-size: 14px;
-    font-family: 'Hind';
+    font-family: 'Montserrat';
     margin-top: 25px
 }
 .room-detail_amenities ul,
