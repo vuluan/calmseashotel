@@ -288,7 +288,7 @@ switch (ENVIRONMENT)
  * -------------------------------------------------------------------
  */
 date_default_timezone_set('Asia/Ho_Chi_Minh');
-define('FOLDER', '/');
+define('FOLDER', '/calmseashotel/');
 define('ADMINCP', 'admincp');
 if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on'){
 	define('PATH_URL', 'https://'.$_SERVER['HTTP_HOST'].FOLDER);
@@ -298,9 +298,9 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on'){
 	define('PATH_URL_ADMIN', 'http://'.$_SERVER['HTTP_HOST'].FOLDER.ADMINCP.'/');
 }
 define('BASEFOLDER', substr(BASEPATH, 0, count(BASEPATH)-8));
-define('PREFIX', 'jv-it_');
+define('PREFIX', '');
 define('DB_USER', 'root');
-define('DB_PASS', 'admin');
+define('DB_PASS', '');
 define('DB_NAME', 'db_calmseashotel');
 
 
@@ -308,7 +308,11 @@ define('DB_NAME', 'db_calmseashotel');
 define('DIR_UPLOAD_BANNER', 'assets/uploads/banner/');
 define('DIR_UPLOAD_NEWS', 'assets/uploads/news/');
 define('DIR_UPLOAD_STATIC_PAGES', 'assets/uploads/static_pages/');
-
+define('DIR_UPLOAD_ROOMS', 'assets/uploads/rooms/');
+define('DIR_UPLOAD_SERVICES', 'assets/uploads/services/');
+define('DIR_UPLOAD_OFFERS', 'assets/uploads/offers/');
+define('DIR_UPLOAD_COMMENTS', 'assets/uploads/comments/');
+define('DIR_UPLOAD_LIBRARY', 'assets/uploads/library/');
 
 	
 /*

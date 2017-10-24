@@ -106,8 +106,12 @@ function showResponse(responseText, statusText, xhr, $form) {
 						</div>
 
 						<div class="form-group">
-							<label class="control-label col-md-2">Name: <span class="required" aria-required="true">*</span></label>
-							<div class="col-md-10"><input value="<?php if(isset($result->name)) { print $result->name; }else{ print '';} ?>" type="text" name="nameAdmincp" id="nameAdmincp" class="form-control"/></div>
+							<label class="control-label col-md-2">name_vn: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><input value="<?php if(isset($result->name_vn)) { print $result->name_vn; }else{ print '';} ?>" type="text" name="nameAdmincp" id="nameAdmincp" class="form-control"/></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">Name_en: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><input value="<?php if(isset($result->name_en)) { print $result->name_en; }else{ print '';} ?>" type="text" name="name_enAdmincp" id="name_enAdmincp" class="form-control"/></div>
 						</div>
 
 						<div class="form-group">

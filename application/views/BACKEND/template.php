@@ -51,6 +51,17 @@
         <script type="text/javascript" src="<?= PATH_URL . 'assets/js/admin/' ?>jquery.form.js"></script>
     <?php } ?>
 </head>
+<style type="text/css">
+    .nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 30px;
+    color: #fff !important; 
+}
+    .nav>li.active {
+    background-color: #5b9bd1 ! important;
+}
+</style>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
 <body class="page-header-fixed page-quick-sidebar-over-content">
@@ -122,13 +133,34 @@
                     </div>
                     <!-- END SIDEBAR TOGGLER BUTTON -->
                 </li>
-                <!--<li class="start<?php if ($this->uri->segment(2) == '') {
-                    print ' active';
-                } ?>"><a href="<?= PATH_URL_ADMIN ?>"><i class="icon-home"></i><span class="title">Dashboard</span></a></li>-->
-                <?= modules::run('admincp/menu') ?>
-                <li class="last<?php if ($this->uri->segment(2) == 'setting') {
-                    print ' active';
-                } ?>"><a href="<?= PATH_URL_ADMIN . 'setting' ?>"><i class="icon-settings"></i><span class="title">Settings</span></a>
+                </li>
+                <li class="last "><a><i class="fa fa-inbox" ></i>Quản lý trang chủ<span class="caret"></span></a>
+                    <ul class="nav child_menu">
+                      <li class="<?php if ($this->uri->segment(2) == 'banners') { print 'active';} ?>"><a href="<?= PATH_URL_ADMIN . 'banners' ?>"><i class="fa fa-arrow-right"></i> Banner</a></li>
+                      <li class="<?php if ($this->uri->segment(2) == 'comments') { print 'active';} ?>"><a href="<?= PATH_URL_ADMIN . 'comments' ?>"><i class="fa fa-arrow-right"></i> Ý kiến khách hàng</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="last <?php if ($this->uri->segment(2) == 'utilities') { print ' active';} ?>"><a href="<?= PATH_URL_ADMIN . 'utilities' ?>"><i class="fa fa-cutlery"></i><span class="title">Quản lý tiện ích</span></a></li>
+                <li class="last <?php if ($this->uri->segment(2) == 'news') { print ' active';} ?>"><a href="<?= PATH_URL_ADMIN . 'news' ?>"><i class="fa fa-newspaper-o"></i><span class="title">Quản lý tin tức</span></a></li>
+                <li class="last "><a><i class="fa fa-inbox" ></i>Quản lý phòng <span class="caret"></span></a>
+                    <ul class="nav child_menu">
+                      <li class="<?php if ($this->uri->segment(2) == 'room_manages') { print 'active';} ?>"><a href="<?= PATH_URL_ADMIN . 'room_manages' ?>"><i class="fa fa-arrow-right"></i> Phòng</a></li>
+                      <li class="<?php if ($this->uri->segment(2) == 'room_images') { print 'active';} ?>"><a href="<?= PATH_URL_ADMIN . 'room_images' ?>"><i class="fa fa-arrow-right"></i> Hình ảnh phòng</a></li>
+                      <li class="<?php if ($this->uri->segment(2) == 'room_services') { print 'active';} ?>"><a href="<?= PATH_URL_ADMIN . 'room_services' ?>"><i class="fa fa-arrow-right"></i> Dịch vụ</a></li>
+                      <li class="<?php if ($this->uri->segment(2) == 'room_offers') { print 'active';} ?>"><a href="<?= PATH_URL_ADMIN . 'room_offers' ?>"><i class="fa fa-arrow-right"></i> Ưu đãi</a></li>
+                      <li class="<?php if ($this->uri->segment(2) == 'room_holidayprice') { print 'active';} ?>"><a href="<?= PATH_URL_ADMIN . 'room_holidayprice' ?>"><i class="fa fa-arrow-right"></i> Giá phòng ngày lễ</a></li>
+                    </ul>
+                </li>
+                <li class="last<?php if ($this->uri->segment(2) == 'library') { print ' active';} ?>">
+                    <a href="<?= PATH_URL_ADMIN . 'library' ?>"><i class="fa fa-picture-o"></i><span class="title"> Thư viện hình ảnh</span></a>
+                </li>
+                <li class="last<?php if ($this->uri->segment(2) == 'admincp_modules') { print ' active';} ?>">
+                    <a href="<?= PATH_URL_ADMIN . 'admincp_modules' ?>"><i class="icon-settings"></i><span class="title"> Quản lý modules</span></a>
+                </li>
+                <li class="last<?php if ($this->uri->segment(2) == 'setting') { print ' active';} ?>">
+                    <a href="<?= PATH_URL_ADMIN . 'setting' ?>"><i class="icon-settings"></i><span class="title">Settings</span></a>
                 </li>
             </ul>
             <!-- END SIDEBAR MENU -->
