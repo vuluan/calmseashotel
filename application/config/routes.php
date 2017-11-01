@@ -60,7 +60,7 @@ $route["^(en|vn)"] = $route['default_controller'];
 
 
 //Config Router Front End
-$route["^(en|vn)/home"] 	= $route['default_controller'];
+$route["^(en|vn)/home"] 	= "home";
 $route['^(en|vn)/contact'] 	= "home/contact";
 $route['^(en|vn)/about'] 	= "home/about";
 $route['^(en|vn)/news'] 	= "home/news";
@@ -69,6 +69,13 @@ $route['^(en|vn)/detail-news/(:any)'] 	  = "home/detailnews/$2";
 $route['^(en|vn)/restaurant/(:any)'] 	= "home/restaurant/$2";
 $route['^(en|vn)/rooms/(:any)'] 	= "home/room_detail/$2";
 $route['^(en|vn)/special-offer/(:any)'] 	  = "home/offers_detail/$2";
+$route['^(en|vn)/booking/(:any)'] 	  = "home/booking/$2";
+
+$route["^(en|vn)/home/ajaxSearchBooking"] 		= "home/ajaxSearchBooking";
+
+$route["^(en|vn)/home/ajaxViewDateRateDetail"] 	= "home/ajaxViewDateRateDetail";
+$route["^(en|vn)/home/ajaxViewDateRateDetailForRoom"] 	= "home/ajaxViewDateRateDetailForRoom";
+$route["^(en|vn)/home/doBooking"] 	= "home/doBooking";
 
 $route['^(en|vn)/room-detail'] 	= "home/room_detail";
 $route['^(en|vn)/restaurant'] 	= "home/restaurant";

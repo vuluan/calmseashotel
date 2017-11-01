@@ -1,4 +1,22 @@
 
+    <script type="text/javascript">
+        function searchavailability(){
+            var arrive                      = $('#txtarrive').datepicker({dateFormat: 'yy-mm-dd' }).val(); 
+            var departure                   = $('#txtdeparture').datepicker({dateFormat: 'yy-mm-dd' }).val(); 
+            var adults       =               $('#selAdults').val();
+            var children      =              $('#selChildren').val();
+            var accommodation  =             $('#selAccommodation').val();
+            if(arrive=="" || departure=="" ){
+                alert("Please input arrive or departure");
+                return false;
+            }
+            if(adults=="" || children=="" ){
+                alert("Please input infomation");
+                return false;
+            }
+            window.location.href =('<?= PATH_URL ?><?=$this->lang->lang();?>/booking/search?checkindate='+arrive+'&checkoutdate='+departure+'&adult='+adults+'&children='+children+'&accommodation='+accommodation+'');
+        }
+    </script>
         <!-- BANNER SLIDER -->
         <section class="section-slider">
             <h1 class="element-invisible">Slider</h1>
@@ -37,23 +55,22 @@
                         <div class="col-lg-9">
                             
                                 <div class="availability-form">
-                                    <input type="text" name="arrive" class="awe-calendar from" placeholder="Arrival Date">
-                                    <input type="text" name="departure" class="awe-calendar to" placeholder="Departure Date">
+                                    <input type="text" name="arrive"  id="txtarrive" class="awe-calendar from" placeholder="Arrival Date" data-date-format="yyyy-mm-dd">
+                                    <input type="text" name="departure" id="txtdeparture" class="awe-calendar to" placeholder="Departure Date" data-date-format="yyyy-mm-dd">
 
-                                    <select class="awe-select" name="adults">
-                                        <option>Adults</option>
+                                    <select class="awe-select" name="adults" id="selAdults">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                     </select>
-                                    <select class="awe-select" name="children">
-                                        <option>Children</option>
+                                    <select class="awe-select" name="children" id="selChildren">
+                                        <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
                                     </select>
                                     <div class="vailability-submit">
-                                        <button class="awe-btn awe-btn-13">FIND THE BEST RATE</button>
+                                        <button class="awe-btn awe-btn-13" onclick="searchavailability();">FIND THE BEST RATE</button>
                                     </div>
                                 </div>
                             
@@ -93,7 +110,7 @@
                                         <span><?=lang('span_size')?> M<sup>2</sup></span>
                                     </p>
                                     <p>
-                                        <span class="number">0<?php echo $v->bedding ?></span>
+                                        <span class="number">01</span>
                                         <span><?=lang('span_bedding')?></span>
                                     </p>
                                 </div>

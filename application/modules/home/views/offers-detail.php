@@ -1,4 +1,22 @@
-<!-- SUB BANNER -->
+        <script type="text/javascript">
+            function searchavailability(){
+                var arrive                      = $('#txtarrive').datepicker({dateFormat: 'yy-mm-dd' }).val(); 
+                var departure                   = $('#txtdeparture').datepicker({dateFormat: 'yy-mm-dd' }).val(); 
+                var adults       =               $('#selAdults').val();
+                var children      =              $('#selChildren').val();
+                var accommodation  =             $('#txtAccommodation').html();
+                if(arrive=="" || departure=="" ){
+                    alert("Please input arrive or departure");
+                    return false;
+                }
+                if(adults=="" || children=="" ){
+                    alert("Please input infomation");
+                    return false;
+                }
+                window.location.href =('<?= PATH_URL ?><?=$this->lang->lang();?>/booking/search?checkindate='+arrive+'&checkoutdate='+departure+'&adult='+adults+'&children='+children+'&accommodation='+accommodation+'');
+            }
+        </script>
+        <!-- SUB BANNER -->
         <section class="section-sub-banner bg-9">
             <div class="awe-overlay"></div>
             <div class="sub-banner">
@@ -9,7 +27,6 @@
                 </div>
 
             </div>
-
         </section>
         <!-- END / SUB BANNER -->
         
@@ -29,6 +46,7 @@
                                     </div>
                                     <div class="entry-header">
                                         <h2 class="entry-title"><?php $lang = $this->lang->lang(); $title = "title_".$lang; echo $detailOffers[0]->$title ?></h2>
+                                        <span id="txtAccommodation" style="display: none;"><?php echo $detailOffers[0]->accommodationId ?></span>
                                         <p class="entry-meta">
                                             <span class="posted-on">
                                                 <span class="screen-reader-text">Posted on</span>
@@ -70,68 +88,53 @@
 
                         <div class="col-md-4 col-md-pull-8">
                             <div class="sidebar">
-                                  <!-- SIDEBAR AVAILBBILITY -->
-                                <div class="reservation-sidebar_availability bg-gray">
+                                <!-- SIDEBAR AVAILBBILITY -->
+                                <div class="reservation-sidebar">
+                                <!-- SIDEBAR AVAILBBILITY -->
 
+                                <div class="reservation-sidebar_availability bg-gray availability-form">
                                     <!-- HEADING -->
                                     <h2 class="reservation-heading">YOUR RESERVATION</h2>
                                     <!-- END / HEADING -->
-
                                     <h6 class="check_availability_title">your stay dates</h6>
-                                        
-                                    <div class="check_availability-field">
-                                        <label>Arrive</label>
-                                        <input type="text" class="awe-calendar awe-input" placeholder="Arrive">
-                                    </div>
-                                    
-                                    <div class="check_availability-field">
-                                        <label>Depature</label>
-                                        <input type="text" class="awe-calendar awe-input" placeholder="Depature">
-                                    </div>
-                                    
-                                    <h6 class="check_availability_title">ROOMS &amp; GUest</h6>
-                                    
-                                    <div class="check_availability-field">
-                                        <label>ROOMS</label>
-                                        <select class="awe-select">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                        </select>
-                                    </div>
-                                    
+                                    <div class="check_availability_group">
+                                        <div class="check_availability-field_group">
+                                            <div class="check_availability-field">
+                                                <label>Arrive</label>
+                                                <input type="text" name="arrive"  id="txtarrive" class="awe-calendar from" placeholder="Arrival">
+                                            </div>
+
+                                            <div class="check_availability-field">
+                                                <label>Depature</label>
+                                                <input type="text" name="departure" id="txtdeparture" class="awe-calendar to" placeholder="Departure">
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <h6 class="check_availability_title">ROOMS & GUESTS</h6>
                                     <div class="check_availability_group">
                                         <div class="check_availability-field_group">
                                             <div class="check_availability-field">
                                                 <label>Adult</label>
-                                                <select class="awe-select">
+                                                <select class="awe-select" id="selAdults">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
                                                 </select>
                                             </div>
                                             <div class="check_availability-field">
                                                 <label>Chirld</label>
-                                                <select class="awe-select">
+                                                <select class="awe-select" id="selChildren">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="awe-btn awe-btn-13">CHECK AVAILABLE</button>
-
+                                    <button class="awe-btn awe-btn-13" onclick="searchavailability();">Search</button>
                                 </div>
+                                <!-- END / SIDEBAR AVAILBBILITY -->
+                            </div>
                                 <!-- END / SIDEBAR AVAILBBILITY -->
 
 

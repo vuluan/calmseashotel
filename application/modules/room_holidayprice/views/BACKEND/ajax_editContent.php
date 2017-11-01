@@ -138,7 +138,7 @@ function showResponse(responseText, statusText, xhr, $form) {
 
 						<div class="form-group">
 							<label class="control-label col-md-2">Percent increase(%): <span class="required" aria-required="true">*</span></label>
-							<div class="col-md-4"><input value="<?php if(isset($result->price)) { print $result->price; }else{ print '';} ?>" type="text" name="priceAdmincp" id="priceAdmincp" class="form-control"/></div>
+							<div class="col-md-4"><input value="<?php if(isset($result->pricepercent)) { print $result->pricepercent; }else{ print '';} ?>" type="text" name="priceAdmincp" id="priceAdmincp" class="form-control"/></div>
 						</div>
 
 						<div class="form-group last">

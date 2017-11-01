@@ -1,3 +1,21 @@
+        <script type="text/javascript">
+            function searchavailability(){
+                var arrive                      = $('#txtarrive').datepicker({dateFormat: 'yy-mm-dd' }).val(); 
+                var departure                   = $('#txtdeparture').datepicker({dateFormat: 'yy-mm-dd' }).val(); 
+                var adults       =               $('#selAdults').val();
+                var children      =              $('#selChildren').val();
+                var accommodation  =             $('#txtAccommodation').html();
+                if(arrive=="" || departure=="" ){
+                    alert("Please input arrive or departure");
+                    return false;
+                }
+                if(adults=="" || children=="" ){
+                    alert("Please input infomation");
+                    return false;
+                }
+                window.location.href =('<?= PATH_URL ?><?=$this->lang->lang();?>/booking/search?checkindate='+arrive+'&checkoutdate='+departure+'&adult='+adults+'&children='+children+'&accommodation='+accommodation+'');
+            }
+        </script>
         
         <!-- SUB BANNER -->
         <section class="section-sub-banner bg-16">
@@ -13,7 +31,7 @@
 
         </section>
         <!-- END / SUB BANNER -->
-        
+        <span id="txtAccommodation" style="display: none;"><?php echo $detailRooms[0]->id ?></span>
         <!-- ROOM DETAIL -->
         <section class="section-room-detail bg-white">
             <div class="container">
@@ -53,12 +71,6 @@
                         
                     </div>
                 </div>
-                <!-- END / DETAIL -->
-                <script type="text/javascript">
-                    function booking(){
-                        window.location.href =('<?= PATH_URL ?><?=$this->lang->lang();?>/booking-step-1');
-                    }
-                </script>
                 <!-- TAB -->
                 <div class="room-detail_tab">
                     
@@ -88,19 +100,29 @@
                                         }else{?>
                                         <?php foreach ($offersRooms as $key => $value): ;?>
                                             <div class="reservation-package_item">
-                                                <div class="reservation-package_img">
-                                                    <a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug;?>"><img src="<?=PATH_URL.DIR_UPLOAD_OFFERS.$value->image ?>" alt=""></a>
-                                                </div>
-                                                <div class="reservation-package_text">
-                                                    <h4><a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug.'-'.$value->id;?>"><?php $lang = $this->lang->lang(); $title = "title_".$lang; echo $value->$title ?></a></h4>
-                                                    <p><?php $lang = $this->lang->lang(); $des = "description_".$lang; echo $value->$des ?></p>
-                                                    <div class="reservation-package_book-price">
-                                                        <p class="reservation-package_price">
-                                                            <span class="amout format-price"><?php echo $value->price*(100-$value->discount)/100; ?></span>
-                                                        </p>
-                                                        <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/booking-step-1" class="awe-btn awe-btn-default">Book package</a>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-3 col-md-3">
+                                                        <div class="reservation-package_img">
+                                                            <a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug;?>"><img src="<?=PATH_URL.DIR_UPLOAD_OFFERS.$value->image ?>" alt=""></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                                        <div class="reservation-package_text">
+                                                            <h4><a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug.'-'.$value->id;?>"><?php $lang = $this->lang->lang(); $title = "title_".$lang; echo $value->$title ?></a></h4>
+                                                            <p><?php $lang = $this->lang->lang(); $des = "description_".$lang; echo $value->$des ?></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-3 col-md-3">
+                                                        <div class="reservation-package_text">
+                                                                <p class="reservation-package_price">
+                                                                    <span class="amout format-price"><?php echo $value->price*(100-$value->discount)/100; ?></span>
+                                                                </p>
+                                                                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/booking-step-1" class="awe-btn awe-btn-default">Book package</a>
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                
+                                                
                                             </div>
                                             
                                         <?php endforeach ?>     
@@ -127,33 +149,30 @@
                                 </div>
                                 <div class="room-detail_form">
                                     <label>Arrive</label>
-                                    <input type="text" class="awe-calendar from" placeholder="Arrival Date">
+                                    <input type="text" class="awe-calendar from" placeholder="Arrival Date" id="txtarrive">
                                 
                                     <label>Depature</label>
-                                    <input type="text" class="awe-calendar to" placeholder="Departure Date">
+                                    <input type="text" class="awe-calendar to" placeholder="Departure Date" id="txtdeparture">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label>Adult</label>
-                                            <select class="awe-select">
+                                            <select class="awe-select" id="selAdults">
                                                 <option>1</option>
                                                 <option>2</option>
-                                                <option selected>3</option>
-                                                <option>4</option>
+                                                <option>3</option>
                                             </select>
                                         </div>
                                         <div class="col-md-6">
                                             <label>Chirld</label>
-                                            <select class="awe-select">
+                                            <select class="awe-select" id="selChildren">
+                                                <option>0</option>
                                                 <option>1</option>
                                                 <option>2</option>
-                                                <option selected>3</option>
-                                                <option>4</option>
+                                                <option>3</option>
                                             </select>
                                         </div>
                                     </div>
-                                    
-                                    
-                                    <button class="awe-btn awe-btn-13" onclick="booking();">Book Now</button>
+                                    <button class="awe-btn awe-btn-13" onclick="searchavailability();">Book Now</button>
                                 </div>
                             </div>
                             <!-- END / FORM BOOK -->
@@ -169,17 +188,28 @@
                                         }else{?>
                                         <?php foreach ($offersRooms as $key => $value): ;?>
                                             <div class="reservation-package_item">
-                                                <div class="reservation-package_img">
-                                                    <a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug;?>"><img src="<?=PATH_URL.DIR_UPLOAD_OFFERS.$value->image ?>" alt=""></a>
-                                                </div>
-                                                <div class="reservation-package_text">
-                                                    <h4><a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug.'-'.$value->id;?>"><?php $lang = $this->lang->lang(); $title = "title_".$lang; echo $value->$title ?></a></h4>
-                                                    <p><?php $lang = $this->lang->lang(); $des = "description_".$lang; echo $value->$des ?></p>
-                                                    <div class="reservation-package_book-price">
-                                                        <p class="reservation-package_price">
-                                                            <span class="amout format-price"><?php echo $value->price*(100-$value->discount)/100; ?></span>
-                                                        </p>
-                                                        <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/booking-step-1" class="awe-btn awe-btn-default">Book package</a>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-sm-3 col-md-3">
+                                                        <div class="reservation-package_img">
+                                                            <a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug;?>"><img src="<?=PATH_URL.DIR_UPLOAD_OFFERS.$value->image ?>" alt=""></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                                        <div class="reservation-package_text">
+                                                            <h4><a href="<?= PATH_URL ?><?=$this->lang->lang().'/special-offer/'.$value->slug.'-'.$value->id;?>"><?php $lang = $this->lang->lang(); $title = "title_".$lang; echo $value->$title ?></a></h4>
+                                                            <p><?php $lang = $this->lang->lang(); $des = "description_".$lang; echo $value->$des ?></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-3 col-md-3">
+
+                                                        <div class="reservation-package_text">
+                                                            <div class="reservation-package_book-price">
+                                                                <p class="reservation-package_price">
+                                                                   <span class="amout format-price"><?php echo $value->price*(100-$value->discount)/100; ?></span> <span style="font-weight: bold;">VND</span>
+                                                                </p>
+                                                                <a  onclick="searchavailability();" class="awe-btn awe-btn-default">Book package</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

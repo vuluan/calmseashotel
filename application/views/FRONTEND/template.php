@@ -26,6 +26,8 @@
     <!-- <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/datepiker/' ?>style.css"> -->
     <!-- MAIN STYLE -->
     <link rel="stylesheet" type="text/css" href="<?= PATH_URL . 'assets/css/frontend/' ?>style.css">
+    <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/bootstrap.min.js"></script>
     
 </head>
 <body> <!--<![endif]-->
@@ -131,7 +133,7 @@
         <!-- END / HEADER -->
         <?= $content; ?>
 
-                <!-- FOOTER -->
+        <!-- FOOTER -->
         <footer id="footer">
 
             <!-- FOOTER TOP -->
@@ -281,9 +283,9 @@
    
     <!-- LOAD JQUERY -->
     
-    <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery-1.11.0.min.js"></script>
+    
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/bootstrap.min.js"></script>
+    
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/bootstrap-select.js"></script>
     <!-- <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/datepiker/jquery.dateFormat.js"></script>
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/datepiker/index.js"></script> -->
@@ -302,17 +304,14 @@
     <script type="text/javascript" src="<?= PATH_URL; ?>assets/js/frontend/jquery.number.js"></script>
 
 
-
-
      <script type="text/javascript">
-        $(document).ready(function() {
             $(".format-price").number( true,0);
-        });
-
     </script>
+
     <script type="text/javascript">
         var root = '<?=PATH_URL?>';
         var csrf_token;
     </script>
+
 </body>
 </html>
