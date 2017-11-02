@@ -136,18 +136,13 @@ class Home extends MX_Controller {
 			'children' => $this->input->get('children'),
 			'accommodation' =>  $this->input->get('accommodation')
 		);
-		
-
-
 		$this->template->write('title','Chi tiếp ưu đãi Khách sạn calm seas');
 		$this->template->write_view('content','booking',$data);
 		$this->template->render();
 	}
-
 	public function ajaxSearchBooking()
     {
         $data["searchRooms"]= $this->home->getRoomsData();
-
 		//kiem tra offers
 		$HolidayPriceData= $this->home->getHolidayPriceData();
 		$checkindate =  date("Y-m-d 00:00:00", strtotime($this->input->post("arrive")));
@@ -162,56 +157,136 @@ class Home extends MX_Controller {
 		}
         $this->load->view("ajaxSearchBooking",$data);
     }
-
     public function ajaxViewDateRateDetail()
-    {
-		$id = $this->input->post("id");
+    {	//input
+    	$this->session->unset_userdata('SES_BOOKING');
+		$id = $_POST["id"];
+		$totaladults = $this->input->post("adults");
+		$totalchildren = $this->input->post("children");
+		$totalRoom = $this->input->post("totalRoom");
+		//format date
 		$checkindate =  date("Y-m-d 00:00:00", strtotime($this->input->post("arrive")));
 		$checkoutdate = date("Y-m-d 00:00:00", strtotime($this->input->post("departure")));
 		$first_date = strtotime($checkindate);
 		$second_date = strtotime($checkoutdate);
 		$datediff = abs($first_date - $second_date);
-		$totalday= ($datediff / (60*60*24));
-		$result= $this->home->getOffersDetailWithId($id);
+		$totalday= ($datediff / (60*60*24));// total day
+
+		$resultOffers= $this->home->getOffersDetailWithId($id);
+		$totalPrice = 0;
+		for ($i=0; $i < $totalday; $i++) {
+			$date = date('Y-m-d', strtotime('+'.$i. 'day', strtotime($checkindate)));
+			$priceperday = $resultOffers[0]->price*((100-$resultOffers[0]->discount)/100); 
+			$totalPrice = $totalPrice + $priceperday;
+			$listPriceOfDate[] = array(
+				'date' => 	$date,
+				'price'=>	$priceperday,
+			);
+		}
+
+		if ($totaladults>2) {
+			$priceAddAdults =($totaladults-2)*300000;
+		}else{
+			$priceAddAdults= 0;
+		}
+		if ($totalchildren>0) {
+			$priceAddChild =($totalchildren-0)*(300000/2);
+		}else{
+			$priceAddChild= 0;
+		}
+		$totalAdd= $priceAddAdults + $priceAddChild;
+
+		$booking_data = array(
+	        'booking_type'  => 'offer', // mornal or offer
+	        'checkindate' 	=> $checkindate,
+	        'checkoutdate' 	=> $checkoutdate,
+	        'totalRoom'		=> $totalRoom,
+	        'totaladults'	=> $totaladults,
+	        'totalchildren'	=> $totalchildren,
+	        'PriceOfDate'	=> $listPriceOfDate,
+	        'totalday'		=> $totalday,
+	        'totalPrice'	=> $totalPrice,
+	        'result'		=> $resultOffers[0],
+	        'totalAdd'		=> $totalAdd
+		);
+		
+		$this->session->set_userdata('SES_BOOKING', $booking_data);
 
 		$data = array(
-			'result'=>$result[0],
+			'result'=>$resultOffers[0],
 			'totalday'=>$totalday,
 			'checkindate'=>$checkindate
 		);
 		$this->load->view("ajaxViewDateRateDetail",$data);
     }
-
     public function ajaxViewDateRateDetailForRoom()
-    {
+    {	//input
+    	$this->session->unset_userdata('SES_BOOKING');
 		$id = $this->input->post("id");
+		$totaladults = $this->input->post("adults");
+		$totalchildren = $this->input->post("children");
+		$totalRoom = $this->input->post("totalRoom");
+		//format date
 		$checkindate =  date("Y-m-d 00:00:00", strtotime($this->input->post("arrive")));
 		$checkoutdate = date("Y-m-d 00:00:00", strtotime($this->input->post("departure")));
 		$first_date = strtotime($checkindate);
 		$second_date = strtotime($checkoutdate);
 		$datediff = abs($first_date - $second_date);
-		$totalday= ($datediff / (60*60*24));
-
+		$totalday= ($datediff / (60*60*24));//so ngay o
+		// tinh total price
+		$resultRoom= $this->home->getRoomsDataWithId($id);
+		$totalPrice = 0;
 		for ($i=0; $i < $totalday; $i++) {
 			$date = date('Y-m-d', strtotime('+'.$i. 'day', strtotime($checkindate))); 
 			$HolidayPriceData= $this->home->checkHoliday($date);
-			$result= $this->home->getRoomsDataWithId($id);
 			$date1 = date('d-m-Y', strtotime($date));
 			if ($HolidayPriceData != NULL || $HolidayPriceData != '') {
+				$totalPrice = $totalPrice + ($resultRoom[0]->price + ($resultRoom[0]->price * ($HolidayPriceData[0]->pricepercent)/100));
 				$listPriceOfDate[] = array(
 					'date' => '<span style="color:red">'.$date1.'</span>',
-					'price'=>$result[0]->price + ($result[0]->price * ($HolidayPriceData[0]->pricepercent)/100)
+					'price'=>$resultRoom[0]->price + ($resultRoom[0]->price * ($HolidayPriceData[0]->pricepercent)/100)
 				);
 			}else{
+				$totalPrice = $totalPrice + ($resultRoom[0]->price);
 				$listPriceOfDate[] = array(
 					'date' => $date1,
-					'price'=> $result[0]->price
+					'price'=> $resultRoom[0]->price
 				);
 			}
-		}// lo mang no co nhieu hơn nua thi sao
+		}
+		//Check total person
+		if ($totaladults>2) {
+			$priceAddAdults =($totaladults-2)*300000;
+		}else{
+			$priceAddAdults= 0;
+		}
+
+		if ($totalchildren>0) {
+			$priceAddChild =($totalchildren-0)*(300000/2);
+		}else{
+			$priceAddChild= 0;
+		}
+		$totalAdd= $priceAddAdults + $priceAddChild;
+
+		$booking_data = array(
+	        'booking_type'  => 'normal', // mornal or offer
+	        'checkindate' 	=> $checkindate,
+	        'checkoutdate' 	=> $checkoutdate,
+	        'totalRoom'		=> $totalRoom,
+	        'totaladults'	=> $totaladults,
+	        'totalchildren'	=> $totalchildren,
+	        'PriceOfDate'	=> $listPriceOfDate,
+	        'totalday'		=> $totalday,
+	        'totalPrice'	=> $totalPrice,
+	        'result'		=> $resultRoom[0],
+	        'totalAdd'		=> $totalAdd
+		);
+
+		$this->session->set_userdata('SES_BOOKING', $booking_data);
+
 		$data = array(
-			'PriceOfDate'=>$listPriceOfDate,
-			'result'=>$result[0],
+			'PriceOfDate'=>$listPriceOfDate,		
+			'result'=>$resultRoom[0],
 			'totalday'=>$totalday,
 			'checkindate'=>$checkindate,
 		);
@@ -219,14 +294,24 @@ class Home extends MX_Controller {
     }
 
 
-	public function booking_step_1(){
+
+
+	public function bookingOfferOftion(){
+
 		$this->template->write('title','Ưu đãi Khách sạn calm seas');
-		$this->template->write_view('content','booking-step-1');
+		$this->template->write_view('content','booking-step-2',$data);
 		$this->template->render();
 	}
-	public function booking_step_2(){
+
+	public function bookingOftion(){
+		//
+		$data["room"] = $this->room_manages->getData();
+		$data["utility"] = $this->utilities->getData();
+		//
+		$data['session']=$this->session->userdata('SES_BOOKING');
+		$data['dataService'] = $this->home->getServiceData();
 		$this->template->write('title','Ưu đãi Khách sạn calm seas');
-		$this->template->write_view('content','booking-step-2');
+		$this->template->write_view('content','booking-step-2',$data);
 		$this->template->render();
 	}
 	public function booking_step_3(){
@@ -243,7 +328,7 @@ class Home extends MX_Controller {
 
 
 
-	public function doNormal() {
+	public function doBookingNormal() {
 		$booking_data = array(
 	        'booking_type'  => 'normal', // mornal or offer
 	        'booking_price'     => array('2017/10/29' => 1000000, 
@@ -256,7 +341,7 @@ class Home extends MX_Controller {
 		$this->session->set_userdata('SES_BOOKING', $newdata);
 	}
 
-	public function doOffer() {
+	public function doBookingOffer() {
 		$booking_data = array(
 	        'booking_type'  => 'offer', // mornal or offer
 	        'booking_price'     => array('2017/10/29' => 1000000, 

@@ -122,11 +122,10 @@
                                                 </select>
                                             </div>
                                             <div class="check_availability-field">
-                                                <label>Chirld</label>
+                                                <label>Child</label>
                                                 <select class="awe-select" id="selChildren">
                                                     <option>1</option>
                                                     <option>2</option>
-                                                    <option>3</option>
                                                 </select>
                                             </div>
                                         </div>

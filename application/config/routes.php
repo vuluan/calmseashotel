@@ -69,21 +69,22 @@ $route['^(en|vn)/detail-news/(:any)'] 	  = "home/detailnews/$2";
 $route['^(en|vn)/restaurant/(:any)'] 	= "home/restaurant/$2";
 $route['^(en|vn)/rooms/(:any)'] 	= "home/room_detail/$2";
 $route['^(en|vn)/special-offer/(:any)'] 	  = "home/offers_detail/$2";
+//booking buoc 1
 $route['^(en|vn)/booking/(:any)'] 	  = "home/booking/$2";
-
 $route["^(en|vn)/home/ajaxSearchBooking"] 		= "home/ajaxSearchBooking";
-
 $route["^(en|vn)/home/ajaxViewDateRateDetail"] 	= "home/ajaxViewDateRateDetail";
 $route["^(en|vn)/home/ajaxViewDateRateDetailForRoom"] 	= "home/ajaxViewDateRateDetailForRoom";
-$route["^(en|vn)/home/doBooking"] 	= "home/doBooking";
+//booking buoc 2
+$route["^(en|vn)/booking-oftions"] 	= "home/bookingOftion";
+$route["^(en|vn)/home/bookingOfferOftion"] 	= "home/bookingOfferOftion";
 
 $route['^(en|vn)/room-detail'] 	= "home/room_detail";
 $route['^(en|vn)/restaurant'] 	= "home/restaurant";
 $route['^(en|vn)/restaurant1'] 	= "home/restaurant1";
 
 
-$route['^(en|vn)/booking-step-1'] 		= "home/booking_step_1";
-$route['^(en|vn)/booking-step-2'] 		= "home/booking_step_2";
+// $route['^(en|vn)/booking-step-1'] 		= "home/booking_step_1";
+// $route['^(en|vn)/booking-step-2'] 		= "home/booking_step_2";
 $route['^(en|vn)/booking-step-3'] 		= "home/booking_step_3";
 $route['^(en|vn)/booking-step-4'] 		= "home/booking_step_4";
 // $route['^(en|jp)/categories/loadlist'] = "categories/loadlist";

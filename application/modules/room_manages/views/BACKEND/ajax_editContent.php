@@ -233,14 +233,22 @@ function showResponse(responseText, statusText, xhr, $form) {
 							<label class="control-label col-md-2">Limit number rooms: <span class="required" aria-required="true">*</span></label>
 							<div class="col-md-10"><input value="<?php if(isset($result->amount)) { print $result->amount; }else{ print '';} ?>" type="text" name="amountAdmincp" id="amountAdmincp" class="form-control formatNumber"/></div>
 						</div>
-
 						<div class="form-group last">
-							<label class="control-label col-md-2">Description: <span class="required" aria-required="true">*</span></label>
-							<div class="col-md-10"><textarea name="contentAdmincp" id="contentAdmincp" cols="" rows="8"><?php if(isset($result->description_vn)) { print $result->description_vn; }else{ print '';} ?></textarea></div>
+							<label class="control-label col-md-2">Description_vn: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><textarea name="descriptionAdmincp" id="descriptionAdmincp" cols="" rows="5" class="form-control"><?php if(isset($result->description_vn)) { print $result->description_vn; }else{ print '';} ?></textarea></div>
 						</div>
 						<div class="form-group last">
 							<label class="control-label col-md-2">Description_en: <span class="required" aria-required="true">*</span></label>
-							<div class="col-md-10"><textarea name="content_enAdmincp" id="content_enAdmincp" cols="" rows="8"><?php if(isset($result->description_vn)) { print $result->description_en; }else{ print '';} ?></textarea></div>
+							<div class="col-md-10"><textarea name="description_enAdmincp" id="description_enAdmincp" cols="" rows="5" class="form-control"><?php if(isset($result->description_en)) { print $result->description_en; }else{ print '';} ?></textarea></div>
+						</div>
+
+						<div class="form-group last">
+							<label class="control-label col-md-2">Amenities_vn: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><textarea name="contentAdmincp" id="contentAdmincp" cols="" rows="8"><?php if(isset($result->amenities_vn)) { print $result->amenities_vn; }else{ print '';} ?></textarea></div>
+						</div>
+						<div class="form-group last">
+							<label class="control-label col-md-2">Amenities_vn: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><textarea name="content_enAdmincp" id="content_enAdmincp" cols="" rows="8"><?php if(isset($result->amenities_en)) { print $result->amenities_en; }else{ print '';} ?></textarea></div>
 						</div>
 					</div>
 					<div class="form-actions">

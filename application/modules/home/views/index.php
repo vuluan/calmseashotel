@@ -63,11 +63,10 @@
                                         <option>2</option>
                                         <option>3</option>
                                     </select>
-                                    <select class="awe-select" name="children" id="selChildren">
+                                    <select class="awe-select" name="child" id="selChildren">
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
-                                        <option>3</option>
                                     </select>
                                     <div class="vailability-submit">
                                         <button class="awe-btn awe-btn-13" onclick="searchavailability();">FIND THE BEST RATE</button>
@@ -102,7 +101,7 @@
                                 <p class="price"><span class="format-price"><?php echo $v->price ?></span> VNĐ</p>
                                 <div class="info upper">
                                     <p>
-                                        <span class="number">0<?php echo $v->occupancyAdult ?></span>
+                                        <span class="number">02</span>
                                         <span><?=lang('span_max_guest')?></span>
                                     </p>
                                     <p>

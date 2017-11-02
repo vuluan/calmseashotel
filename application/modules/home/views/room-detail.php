@@ -163,7 +163,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Chirld</label>
+                                            <label>Child</label>
                                             <select class="awe-select" id="selChildren">
                                                 <option>0</option>
                                                 <option>1</option>

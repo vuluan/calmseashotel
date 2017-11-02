@@ -114,7 +114,7 @@ class Room_services_model extends CI_Model {
 				'image'=> trim($fileName['image']),
 				'description_vn'=> trim($this->input->post('descriptionAdmincp')),
 				'description_en'=> trim($this->input->post('description_enAdmincp')),
-				'content'=> trim($this->input->post('contentAdmincp')),
+				'content_vn'=> trim($this->input->post('contentAdmincp')),
 				'content_en'=> trim($this->input->post('content_enAdmincp')),
 				'price'=> $this->input->post('priceAdmincp'),
 				'status'=> $this->input->post('statusAdmincp'),

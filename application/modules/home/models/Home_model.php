@@ -6,13 +6,18 @@ class Home_model extends CI_Model {
 	private $table_accommodations 		= 'tbl_accommodations';
 	private $table_booking				= 'tbl_booking';
 	private $table_promotions 			= 'tbl_promotions';
+	private $table_services 			= 'tbl_services';
 
 	function getRoomsData(){
 
         $room = $_POST["accommodation"];
+        $adult = $_POST["adults"];
+        $child = $_POST["children"];
 		$this->db->select('*');
 		$this->db->where('status',1);
 		$this->db->where('(`id` LIKE "%'.$room.'%")');
+		$this->db->where('occupancyAdult >=',$adult);
+		$this->db->where('occupancyChild >=',$child);
 		$this->db->from(PREFIX.$this->table_accommodations);
 		$query = $this->db->get();
 		if($query->result()){
@@ -35,6 +40,7 @@ class Home_model extends CI_Model {
 		$this->db->select('*');
 		$this->db->where('status',1);
 		$this->db->where('condition',$totalday);
+		$this->db->order_by('discount','DESC');
 		$this->db->from(PREFIX.$this->table_promotions);
 		$query = $this->db->get();
 		if($query->result()){
@@ -76,7 +82,7 @@ class Home_model extends CI_Model {
 	}
 
 	function getOffersDetailWithId($id){
-		$this->db->select('n.*,c.price');
+		$this->db->select('n.*,c.price,c.name_en as roomname_en, c.name_vn as roomname_vn');
 		$this->db->where('n.status',1);
 		$this->db->where('n.id',$id);
 		$this->db->order_by('n.created','DESC');
@@ -95,6 +101,19 @@ class Home_model extends CI_Model {
 		$this->db->where('status',1);
 		$this->db->where('id',$id);
 		$this->db->from(PREFIX.$this->table_accommodations);
+		$query = $this->db->get();
+		if($query->result()){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function getServiceData(){;
+		$this->db->select('*');
+		$this->db->where('status',1);
+		$this->db->order_by('price','DESC');
+		$this->db->from(PREFIX.$this->table_services);
 		$query = $this->db->get();
 		if($query->result()){
 			return $query->result();

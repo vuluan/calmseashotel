@@ -1,4 +1,6 @@
-
+    <?php if ($searchRooms==''){
+        echo "no data";
+    }else{?>
     <?php foreach ($searchRooms as $key => $Rooms): ;?>   
 
         <!-- ITEM -->
@@ -8,21 +10,32 @@
                 <a href="<?=PATH_URL.$this->lang->lang().'/rooms/'.$Rooms->slug?>" target="_blank"><img src="<?=PATH_URL.DIR_UPLOAD_ROOMS.$Rooms->images ?>" alt=""></a>
             </div>
             <div class="reservation-room_text">
+                <p class="reservation-package_text">
+                   <?php $lang = $this->lang->lang(); $description = "description_".$lang; echo $Rooms->$description ?>
+                </p>
                 <div class="reservation-room_desc">
-                    <ul>
-                        <li></i> Max Adult: <?php echo $Rooms->occupancyAdult ?></li>
-                        <li></i> Max Child: <?php echo $Rooms->occupancyChild ?></li>
-                        <li></i> <?=lang('span_bedding')?>: 0<?php echo $Rooms->bedding ?></li>
-                        <li></i> <?=lang('span_view')?>: <?php echo $Rooms->view ?></li>
-                        <li></i> Size: <?php echo $Rooms->size ?> m2</li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                             <ul>
+                                <li></i> Max Adult: <?php echo $Rooms->occupancyAdult ?></li>
+                                <li></i> Max Child: <?php echo $Rooms->occupancyChild ?></li>
+                                <li></i> <?=lang('span_bedding')?>: 0<?php echo $Rooms->bedding ?></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                             <ul>
+                                <li></i> <?=lang('span_view')?>: <?php echo $Rooms->view ?></li>
+                                <li></i> Size: <?php echo $Rooms->size ?> m2</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <a href="<?=PATH_URL.$this->lang->lang().'/rooms/'.$Rooms->slug?>" class="reservation-room_view-more" target="_blank">View More Infomation</a>
                 <div class="clear"></div>
                 <p class="reservation-room_price">
                     <span class="reservation-room_amout format-price"><?php echo $Rooms->price ?></span> VNĐ / days
                 </p>
-                <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/booking-step-2" class="awe-btn awe-btn-default">BOOK ROOM</a>
+                <a onclick="viewDateRateDetailForRoom(<?php echo $Rooms->id ?>);" href="<?= PATH_URL ?><?=$this->lang->lang();?>/booking-oftions" class="awe-btn awe-btn-default">BOOK ROOM</a>
                 <br>
                 <a class="reservation-room_view-more" style="cursor: pointer; color: #121213;" onclick="viewDateRateDetailForRoom(<?php echo $Rooms->id ?>);">[+] Daily rate detail</a>
             </div>
@@ -60,7 +73,7 @@
                                             <a  onclick="viewDateRateDetailForOffers(<?php echo $Offers->id ?>);">[+] Daily rate detail</a>
                                         </p>
                                         
-                                        <a href="<?= PATH_URL ?><?=$this->lang->lang();?>/booking-step-1" class="awe-btn awe-btn-default">Book package</a>
+                                        <a onclick="viewDateRateDetailForOffers(<?php echo $Offers->id ?>);" href="<?= PATH_URL ?><?=$this->lang->lang();?>/booking-oftions" class="awe-btn awe-btn-default">Book package</a>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +88,7 @@
         </div>
         <!-- END / ITEM -->
         <?php endforeach ?>
-
+        <?php } ?>
         <script type="text/javascript">
             $(".format-price").number( true,0);
         </script>

@@ -29,6 +29,9 @@
             csrf_token                 : $("#csrf_token").val(),
             arrive     :                 $('#txtFromDate').val(), 
             departure   :                $('#txtToDate').val(), 
+            totalRoom   :                $('#selTotalRoom').val(), 
+            adults     :                 $('#selAdults').val(), 
+            children   :                $('#selChildren').val(), 
             id : id
         }, function() {
             $('#myModalOffers').modal('show');
@@ -40,20 +43,25 @@
             csrf_token                 : $("#csrf_token").val(),
             arrive     :                 $('#txtFromDate').val(), 
             departure   :                $('#txtToDate').val(), 
+            totalRoom   :                $('#selTotalRoom').val(), 
+            adults     :                 $('#selAdults').val(), 
+            children   :                $('#selChildren').val(), 
+
             id : id
         }, function() {
             $('#myModalRooms').modal('show');
         });
     }
 
+
 </script>
         <!-- SUB BANNER -->
-        <section class="section-sub-banner bg-9">
+        <section class="section-sub-banner bg-20">
             <div class="awe-overlay"></div>
             <div class="sub-banner">
                 <div class="container">
-                    <div class="text text-center">
-                        <h2>BOOKING</h2>
+                    <div class="text text-center" >
+                        <h2>RESERVATION</h2>
                     </div>
                 </div>
             </div>
@@ -142,9 +150,9 @@
                                                 </select>
                                             </div>
                                             <div class="check_availability-field">
-                                                <label>Chirld</label>
+                                                <label>Child</label>
                                                 <select class="awe-select" id="selChildren" value='<?php print $postdata['children'];  ?>'>
-                                                    <?php  for ($i=0; $i < 4; $i++) { ?>
+                                                    <?php  for ($i=0; $i < 3; $i++) { ?>
                                                         <?php  
                                                             $select = '';
                                                             if($postdata['child'] == $i){
@@ -155,8 +163,10 @@
                                                     <?php } ?>
                                                 </select>
                                             </div>
+
                                         </div>
                                     </div>
+                                    <p style="margin-top: 10px ! important; color: #898989">* Adult and child average per/room</p>
                                     <button class="awe-btn awe-btn-13" onclick="searchBooking();reloadurl();">Search</button>
                                 </div>
                                 <!-- END / SIDEBAR AVAILBBILITY -->
@@ -177,7 +187,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
         <!-- END / RESERVATION -->
         <div id="viewDateRateDetail">
