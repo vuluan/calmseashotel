@@ -50,16 +50,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['du-an/(:any)'] = "news/detail/$1";
-$route['lien-he'] = "home/contact";
-
 //Config Router Multi Language
-// $route['^(en|jp)$'] = $route['default_controller'];
+$route["^(en|vn)"] = $route['default_controller'];
+
 
 //Config Router Front End
+$route["^(en|vn)/home"] 	= "home";
+$route['^(en|vn)/contact'] 	= "home/contact";
+$route['^(en|vn)/about'] 	= "home/about";
+$route['^(en|vn)/news'] 	= "home/news";
+$route['^(en|vn)/offers'] 	= "home/offers";
+$route['^(en|vn)/detail-news/(:any)'] 	  = "home/detailnews/$2";
+$route['^(en|vn)/restaurant/(:any)'] 	= "home/restaurant/$2";
+$route['^(en|vn)/rooms/(:any)'] 	= "home/room_detail/$2";
+$route['^(en|vn)/special-offer/(:any)'] 	  = "home/offers_detail/$2";
+//booking buoc 1
+$route['^(en|vn)/booking/(:any)'] 	  = "home/booking/$2";
+$route["^(en|vn)/home/ajaxSearchBooking"] 		= "home/ajaxSearchBooking";
+$route["^(en|vn)/home/ajaxViewDateRateDetail"] 	= "home/ajaxViewDateRateDetail";
+$route["^(en|vn)/home/ajaxViewDateRateDetailForRoom"] 	= "home/ajaxViewDateRateDetailForRoom";
+//booking buoc 2
+$route["^(en|vn)/booking-oftions"] 	= "home/bookingOftion";
+$route["^(en|vn)/home/bookingOfferOftion"] 	= "home/bookingOfferOftion";
+
+$route['^(en|vn)/room-detail'] 	= "home/room_detail";
+$route['^(en|vn)/restaurant'] 	= "home/restaurant";
+$route['^(en|vn)/restaurant1'] 	= "home/restaurant1";
+
+
+// $route['^(en|vn)/booking-step-1'] 		= "home/booking_step_1";
+// $route['^(en|vn)/booking-step-2'] 		= "home/booking_step_2";
+$route['^(en|vn)/booking-step-3'] 		= "home/booking_step_3";
+$route['^(en|vn)/booking-step-4'] 		= "home/booking_step_4";
 // $route['^(en|jp)/categories/loadlist'] = "categories/loadlist";
 
 //Config Router Admincp

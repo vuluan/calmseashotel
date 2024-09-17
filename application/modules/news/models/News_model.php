@@ -1,11 +1,11 @@
 <?php
 class News_model extends CI_Model {
 	private $module = 'news';
-	private $table = 'news';
-	private $table_category = 'categories';
+	private $table = 'tbl_news';
+	private $table_category = 'tbl_categories';
 
 	function getsearchContent($limit,$page){
-		$this->db->select('n.*, c.name as cate_name');
+		$this->db->select('n.*, c.name_vn as cate_name');
 		$this->db->limit($limit,$page);
 		$this->db->order_by('n.delete','ASC');
 		$this->db->order_by($this->input->post('func_order_by'),$this->input->post('order_by'));
@@ -13,7 +13,7 @@ class News_model extends CI_Model {
 			$this->db->where('(n.`title` LIKE "%'.$this->input->post('title').'%")');
 		}
 		if($this->input->post('cate_name')!=''){
-			$this->db->where('(c.`name` LIKE "%'.$this->input->post('cate_name').'%")');
+			$this->db->where('(c.`name_vn` LIKE "%'.$this->input->post('cate_name').'%")');
 		}
 		if($this->input->post('dateFrom')!='' && $this->input->post('dateTo')==''){
 			$this->db->where('n.created >= "'.date('Y-m-d 00:00:00',strtotime($this->input->post('dateFrom'))).'"');
@@ -43,12 +43,12 @@ class News_model extends CI_Model {
 	}
 	
 	function getTotalsearchContent(){
-		$this->db->select('n.*, c.name as cate_name');
+		$this->db->select('n.*, c.name_vn as cate_name');
 		if($this->input->post('title')!=''){
 			$this->db->where('(n.`title` LIKE "%'.$this->input->post('title').'%")');
 		}
 		if($this->input->post('cate_name')!=''){
-			$this->db->where('(c.`name` LIKE "%'.$this->input->post('cate_name').'%")');
+			$this->db->where('(c.`name_vn` LIKE "%'.$this->input->post('cate_name').'%")');
 		}
 		if($this->input->post('dateFrom')!='' && $this->input->post('dateTo')==''){
 			$this->db->where('n.created >= "'.date('Y-m-d 00:00:00',strtotime($this->input->post('dateFrom'))).'"');
@@ -119,10 +119,13 @@ class News_model extends CI_Model {
 			$data = array(
 				'cate_id'=> trim($this->input->post('cateAdmincp', true)),
 				'image'=> trim($fileName['image']),
-				'title'=> trim($this->input->post('titleAdmincp', true)),
+				'title_vn'=> trim($this->input->post('titleAdmincp', true)),
+				'title_en'=> trim($this->input->post('title_enAdmincp', true)),
 				'slug'=> trim($this->input->post('slugAdmincp', true)),
-				'description'=> trim($this->input->post('descriptionAdmincp')),
-				'content'=> trim($this->input->post('contentAdmincp')),
+				'description_vn'=> trim($this->input->post('descriptionAdmincp')),
+				'description_en'=> trim($this->input->post('description_enAdmincp')),
+				'content_vn'=> trim($this->input->post('contentAdmincp')),
+				'content_en'=> trim($this->input->post('content_enAdmincp')),
 				'highlight'=> $this->input->post('highlightAdmincp'),
 				'seo_title'=> trim($this->input->post('seo_titleAdmincp', true)),
 				'seo_keywords'=> trim($this->input->post('seo_keywordsAdmincp', true)),
@@ -164,10 +167,13 @@ class News_model extends CI_Model {
 			$data = array(
 				'cate_id'=> trim($this->input->post('cateAdmincp', true)),
 				'image'=> trim($fileName['image']),
-				'title'=> trim($this->input->post('titleAdmincp', true)),
+				'title_vn'=> trim($this->input->post('titleAdmincp', true)),
+				'title_en'=> trim($this->input->post('title_enAdmincp', true)),
 				'slug'=> trim($this->input->post('slugAdmincp', true)),
-				'description'=> trim($this->input->post('descriptionAdmincp')),
-				'content'=> trim($this->input->post('contentAdmincp')),
+				'description_vn'=> trim($this->input->post('descriptionAdmincp')),
+				'description_en'=> trim($this->input->post('description_enAdmincp')),
+				'content_vn'=> trim($this->input->post('contentAdmincp')),
+				'content_en'=> trim($this->input->post('content_enAdmincp')),
 				'highlight'=> $this->input->post('highlightAdmincp'),
 				'seo_title'=> trim($this->input->post('seo_titleAdmincp', true)),
 				'seo_keywords'=> trim($this->input->post('seo_keywordsAdmincp', true)),
@@ -214,13 +220,13 @@ class News_model extends CI_Model {
 			return false;
 		}
 	}
-	
-	/*----------------------FRONTEND----------------------*/
-	function getData(){
+
+	function getDataCategory(){
 		$this->db->select('*');
 		$this->db->where('status',1);
+		$this->db->where('delete',0);
 		$this->db->order_by('created','DESC');
-		$query = $this->db->get(PREFIX.$this->table);
+		$query = $this->db->get(PREFIX.$this->table_category);
 
 		if($query->result()){
 			return $query->result();
@@ -228,6 +234,59 @@ class News_model extends CI_Model {
 			return false;
 		}
 	}
+	
+	/*----------------------FRONTEND----------------------*/
+	function getData($limit,$page){
+		$this->db->select('n.*,c.name_vn as cate_name_vn,c.name_en as cate_name_en');
+		$this->db->where('n.status',1);
+		$this->db->limit($limit,$page);
+		$this->db->order_by('n.created','DESC');
+		$this->db->from(PREFIX.$this->table." n");
+		$this->db->join(PREFIX.$this->table_category." c", 'c.id = n.cate_id', "left");
+		$query = $this->db->get();
+
+		if($query->result()){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function getDetailData($link){
+		$arr = explode("-", $link);
+        $n= count($arr) - 1;
+        $id = $arr[$n];
+
+		$this->db->select('n.*,c.name_vn as cate_name_vn,c.name_en as cate_name_en');
+		$this->db->where('n.status',1);
+		$this->db->where('n.id',$id);
+		$this->db->from(PREFIX.$this->table." n");
+		$this->db->join(PREFIX.$this->table_category." c", 'c.id = n.cate_id', "left");
+		$query = $this->db->get();
+
+		if($query->result()){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
+	function getThreeDataLatest(){
+		$this->db->select('n.*,c.name_vn as cate_name_vn,c.name_en as cate_name_en');
+		$this->db->where('n.status',1);
+		$this->db->order_by('created','DESC');
+		$this->db->limit('3');
+		$this->db->from(PREFIX.$this->table." n");
+		$this->db->join(PREFIX.$this->table_category." c", 'c.id = n.cate_id', "left");
+		$query = $this->db->get();
+
+		if($query->result()){
+			return $query->result();
+		}else{
+			return false;
+		}
+	}
+
 
 	function getDataHighlight($amount){
 		$this->db->select('*');

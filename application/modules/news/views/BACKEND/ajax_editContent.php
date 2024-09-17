@@ -24,6 +24,22 @@ $(document).ready( function() {
 				] /* Toolbar configuration */
 	});
 	$('#contentAdmincp').data('liveEdit').startedit();
+	//english
+	$('#content_enAdmincp').liveEdit({
+		height: 350,
+		css: ['<?=PATH_URL?>assets/editor/bootstrap/css/bootstrap.min.css', '<?=PATH_URL?>assets/editor/bootstrap/bootstrap_extend.css','<?=PATH_URL?>assets/css/styles.css'] /* Apply bootstrap css into the editing area */,
+		fileBrowser: '<?=PATH_URL?>assets/editor/assetmanager/asset.php',
+		returnKeyMode: 3,
+		groups: [
+				["group1", "", ["Bold", "Italic", "Underline", "ForeColor", "RemoveFormat"]],
+				["group2", "", ["Bullets", "Numbering", "Indent", "Outdent", "JustifyLeft", "JustifyCenter", "JustifyRight"]],
+				["group3", "", ["Paragraph", "FontSize", "FontDialog", "TextDialog"]],
+				["group4", "", ["LinkDialog", "ImageDialog", "TableDialog"]],
+				["group5", "", ["Undo", "Redo", "FullScreen", "SourceDialog"]],
+				["group6", "", ["Left", "Center", "Right"]]
+				] /* Toolbar configuration */
+	});
+	$('#content_enAdmincp').data('liveEdit').startedit();
 });
 
 function save(){
@@ -32,6 +48,7 @@ function save(){
 		success:       showResponse  // post-submit callback 
     };
 	$('#contentAdmincp').val($('#contentAdmincp').data('liveEdit').getXHTMLBody());
+	$('#content_enAdmincp').val($('#content_enAdmincp').data('liveEdit').getXHTMLBody());
 	$('#frmManagement').ajaxSubmit(options);
 }
 
@@ -52,11 +69,17 @@ function showRequest(formData, jqForm, options) {
 		return false;
 	}
 
-	if(form.seo_titleAdmincp.value == '' || form.seo_keywordsAdmincp.value == '' || form.seo_descriptionAdmincp.value == ''){
-		$('#txt_error').html('Please enter SEO information.');
+	if(form.title_enAdmincp.value == '' || form.description_enAdmincp.value == '' || $('#content_enAdmincp').val() == '<br>' || $('#content_enAdmincp').val() == '' || ($('#content_enAdmincp').val().charCodeAt(0)==10 && isNaN($('#content_enAdmincp').val().charCodeAt(1)))){
+		$('#txt_error').html('Please enter information.');
 		show_perm_denied();
 		return false;
 	}
+
+	// if(form.seo_titleAdmincp.value == '' || form.seo_keywordsAdmincp.value == '' || form.seo_descriptionAdmincp.value == ''){
+	// 	$('#txt_error').html('Please enter SEO information.');
+	// 	show_perm_denied();
+	// 	return false;
+	// }
 }
 
 function showResponse(responseText, statusText, xhr, $form) {
@@ -146,7 +169,7 @@ function showResponse(responseText, statusText, xhr, $form) {
 						<div class="form-group">
 							<label class="control-label col-md-2">Categories: <span class="required" aria-required="true">*</span></label>
 							<div class="col-md-6">
-								<select class="bs-select form-control" data-live-search="true" data-size="8" name="cateAdmincp" id="cateAdmincp">
+								<select class="select form-control" data-live-search="true" data-size="8" name="cateAdmincp" id="cateAdmincp">
 									<option value="">None</option>
 									<?php foreach ($cates as $key => $cate): ?>
 										<?php  
@@ -189,7 +212,11 @@ function showResponse(responseText, statusText, xhr, $form) {
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2">Title: <span class="required" aria-required="true">*</span></label>
-							<div class="col-md-10"><input value="<?php if(isset($result->title)) { print $result->title; }else{ print '';} ?>" type="text" name="titleAdmincp" id="titleAdmincp" class="form-control"/></div>
+							<div class="col-md-10"><input value="<?php if(isset($result->title_vn)) { print $result->title_vn; }else{ print '';} ?>" type="text" name="titleAdmincp" id="titleAdmincp" class="form-control"/></div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-md-2">Title_en: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><input value="<?php if(isset($result->title_en)) { print $result->title_en; }else{ print '';} ?>" type="text" name="title_enAdmincp" id="title_enAdmincp" class="form-control"/></div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-md-2">Slug: <span class="required" aria-required="true">*</span></label>
@@ -197,12 +224,22 @@ function showResponse(responseText, statusText, xhr, $form) {
 						</div>
 						<div class="form-group last">
 							<label class="control-label col-md-2">Description: <span class="required" aria-required="true">*</span></label>
-							<div class="col-md-10"><textarea name="descriptionAdmincp" id="descriptionAdmincp" cols="" rows="5" class="form-control"><?php if(isset($result->description)) { print $result->description; }else{ print '';} ?></textarea></div>
+							<div class="col-md-10"><textarea name="descriptionAdmincp" id="descriptionAdmincp" cols="" rows="5" class="form-control"><?php if(isset($result->description_vn)) { print $result->description_vn; }else{ print '';} ?></textarea></div>
 						</div>
 						<div class="form-group last">
-							<label class="control-label col-md-2">Content: <span class="required" aria-required="true">*</span></label>
-							<div class="col-md-10"><textarea name="contentAdmincp" id="contentAdmincp" cols="" rows="8"><?php if(isset($result->content)) { print $result->content; }else{ print '';} ?></textarea></div>
+							<label class="control-label col-md-2">Description_en: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><textarea name="description_enAdmincp" id="description_enAdmincp" cols="" rows="5" class="form-control"><?php if(isset($result->description_en)) { print $result->description_en; }else{ print '';} ?></textarea></div>
 						</div>
+
+						<div class="form-group last">
+							<label class="control-label col-md-2">Content: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><textarea name="contentAdmincp" id="contentAdmincp" cols="" rows="8"><?php if(isset($result->content_vn)) { print $result->content_vn; }else{ print '';} ?></textarea></div>
+						</div>
+						<div class="form-group last">
+							<label class="control-label col-md-2">Content_en: <span class="required" aria-required="true">*</span></label>
+							<div class="col-md-10"><textarea name="content_enAdmincp" id="content_enAdmincp" cols="" rows="8"><?php if(isset($result->content_en)) { print $result->content_en; }else{ print '';} ?></textarea></div>
+						</div>
+
 						<div class="form-group">
 							<label class="control-label col-md-2">SEO title: <span class="required" aria-required="true">*</span></label>
 							<div class="col-md-10"><input value="<?php if(isset($result->seo_title)) { print $result->seo_title; }else{ print '';} ?>" type="text" name="seo_titleAdmincp" id="seo_titleAdmincp" class="form-control"/></div>

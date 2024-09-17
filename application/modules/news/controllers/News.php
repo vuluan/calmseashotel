@@ -3,7 +3,7 @@
 class News extends MX_Controller {
 
 	private $module = 'news';
-	private $table = 'news';
+	private $table = 'tbl_news';
 	function __construct(){
 		parent::__construct();
 		$this->load->model($this->module.'_model','model');
@@ -50,11 +50,12 @@ class News extends MX_Controller {
 			$result = $this->model->getDetailManagement($id);
 		}
 		$data = array(
-			'cates'=>$this->categories_model->getData(),
+			'cates'=>$this->model->getDataCategory(),
 			'result'=>$result[0],
 			'module'=>$this->module,
 			'id'=>$id
 		);
+
 		$this->template->write_view('content','BACKEND/ajax_editContent',$data);
 		$this->template->render();
 	}

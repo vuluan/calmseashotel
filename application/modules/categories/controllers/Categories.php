@@ -3,7 +3,7 @@
 class Categories extends MX_Controller {
 
 	private $module = 'categories';
-	private $table = 'categories';
+	private $table = 'tbl_categories';
 	function __construct(){
 		parent::__construct();
 		$this->load->model($this->module.'_model','model');

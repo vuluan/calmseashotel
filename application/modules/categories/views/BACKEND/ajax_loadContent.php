@@ -26,7 +26,8 @@
 				<tr role="row">
 					<th class="table-checkbox sorting_disabled" width="25"><input type="checkbox" id="selectAllItems" onclick="selectAllItems(<?=count($result)?>)"></th>
 					<th class="center sorting_disabled" width="35">No.</th>
-					<th class="sorting" onclick="sort('name')" id="name">Name</th>
+					<th class="sorting" onclick="sort('name_vn')" id="name">name_vn</th>
+					<th class="sorting" onclick="sort('name_en')" id="name">Name_en</th>
 					<th class="sorting" onclick="sort('name')" id="name">Slug</th>
 					<th class="center sorting" width="60" onclick="sort('status')" id="status">Status</th>
 					<th class="center sorting" width="80" onclick="sort('created')" id="created">Created</th>
@@ -42,7 +43,8 @@
 				<tr class="item_row<?=$i?> gradeX <?php ($k%2==0) ? print 'odd' : print 'even' ?>" role="row">
 					<td><input type="checkbox" id="item<?=$i?>" onclick="selectItem(<?=$i?>)" value="<?=$v->id?>"></td>
 					<td class="center"><?=$k+1+$start?></td>
-					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?= cutText($v->name, 20); ?></a></td>
+					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?= cutText($v->name_vn, 20); ?></a></td>
+					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?= cutText($v->name_en, 20); ?></a></td>
 					<td><a href="<?=PATH_URL_ADMIN.$module.'/update/'.$v->id?>"><?= cutText($v->slug, 20); ?></a></td>
 					<td class="center" id="loadStatusID_<?=$v->id?>"><a class="no_underline" href="javascript:void(0)" onclick="updateStatus(<?=$v->id?>,<?=$v->status?>,'<?=$module?>')"><?php ($v->status==0) ? print '<span class="label label-sm label-default status-blocked">Blocked</span>' : print '<span class="label label-sm label-success status-approved">Approved</span>' ?></a></td>
 					<td class="center"><?=date('Y-m-d H:i:s',strtotime($v->created))?></td>
@@ -52,8 +54,9 @@
 					<tr style="background:#c6c6c6;" class="item_row<?=$i?> gradeX" role="row">
 						<td><input type="checkbox" id="item<?=$i?>" onclick="selectItem(<?=$i?>)" value="<?=$v->id?>"></td>
 						<td class="center"><?=$k+1+$start?></td>
-						<td><?= cutText($v->name, 20); ?></td>
-						<td><?= cutText($v->slug, 20); ?></td>
+						<td><?= ($v->name_vn); ?></td>
+						<td><?= ($v->name_en); ?></td>
+						<td><?= ($v->slug); ?></td>
 						<td class="center" id="loadStatusID_<?=$v->id?>"><span class="label label-sm label-default status-deleted">Deleted</span></td>
 						<td class="center"><?=date('Y-m-d H:i:s',strtotime($v->created))?></td>
 					</tr>

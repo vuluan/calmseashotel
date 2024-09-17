@@ -1,7 +1,7 @@
 <?php
 class Categories_model extends CI_Model {
 	private $module = 'categories';
-	private $table = 'categories';
+	private $table = 'tbl_categories';
 
 	function getsearchContent($limit,$page){
 		$this->db->select('*');
@@ -9,7 +9,7 @@ class Categories_model extends CI_Model {
 		$this->db->order_by('delete','ASC');
 		$this->db->order_by($this->input->post('func_order_by'),$this->input->post('order_by'));
 		if($this->input->post('name')!=''){
-			$this->db->where('(`name` LIKE "%'.$this->input->post('name').'%")');
+			$this->db->where('(`name_vn` LIKE "%'.$this->input->post('name').'%")');
 		}
 		if($this->input->post('slug')!=''){
 			$this->db->where('(`slug` LIKE "%'.$this->input->post('slug').'%")');
@@ -42,7 +42,7 @@ class Categories_model extends CI_Model {
 	function getTotalsearchContent(){
 		$this->db->select('*');
 		if($this->input->post('name')!=''){
-			$this->db->where('(`name` LIKE "%'.$this->input->post('name').'%")');
+			$this->db->where('(`name_vn` LIKE "%'.$this->input->post('name').'%")');
 		}
 		if($this->input->post('slug')!=''){
 			$this->db->where('(`slug` LIKE "%'.$this->input->post('slug').'%")');
@@ -101,7 +101,8 @@ class Categories_model extends CI_Model {
 			}
 
 			$data = array(
-				'name'=> trim($this->input->post('nameAdmincp', true)),
+				'name_vn'=> trim($this->input->post('nameAdmincp', true)),
+				'name_en'=> trim($this->input->post('name_enAdmincp', true)),
 				'slug'=> trim($this->input->post('slugAdmincp', true)),
 				'status'=> $this->input->post('statusAdmincp'),
 				'created'=> date('Y-m-d H:i:s',time()),
@@ -114,7 +115,7 @@ class Categories_model extends CI_Model {
 		}else{
 			$result = $this->getDetailManagement($this->input->post('hiddenIdAdmincp'));
 			//check name exist
-			if($result[0]->name!=$this->input->post('nameAdmincp')){
+			if($result[0]->name_vn!=$this->input->post('nameAdmincp')){
 				$checkName = $this->checkName($this->input->post('nameAdmincp'),$this->input->post('hiddenIdAdmincp'));
 				if($checkName){
 					print 'error-name-exists.'.$this->security->get_csrf_hash();
@@ -132,7 +133,8 @@ class Categories_model extends CI_Model {
 			}
 			
 			$data = array(
-				'name'=> trim($this->input->post('nameAdmincp', true)),
+				'name_vn'=> trim($this->input->post('nameAdmincp', true)),
+				'name_en'=> trim($this->input->post('name_enAdmincp', true)),
 				'slug'=> trim($this->input->post('slugAdmincp', true)),
 				'status'=> $this->input->post('statusAdmincp')
 			);
@@ -147,7 +149,7 @@ class Categories_model extends CI_Model {
 
 	function checkName($name,$id=0){
 		$this->db->select('id');
-		$this->db->where('name',$name);
+		$this->db->where('name_vn',$name);
 		if($id!=0){
 			$this->db->where_not_in('id',array($id));
 		}
@@ -181,7 +183,6 @@ class Categories_model extends CI_Model {
 	function getData(){
 		$this->db->select('*');
 		$this->db->where('status',1);
-		$this->db->where('delete',0);
 		$this->db->order_by('created','DESC');
 		$query = $this->db->get(PREFIX.$this->table);
 
